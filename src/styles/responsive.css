@@ -1,0 +1,21 @@
+@media only screen and (max-width : 650px) {
+    main > .secondry_container {
+        padding: 0rem ;
+        grid-gap: 1rem;
+    }
+    main > .radiant_container{
+        width: 30rem;
+    }
+}
+
+
+@media only screen and (max-width : 480px) {
+    main > .header {
+        padding: 1rem;
+    }
+
+    .header_right > .theme_icon {
+        margin-left: 1rem;
+    }
+}
+

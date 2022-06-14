@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Pacifico&family=Permanent+Marker&display=swap');
+
+.header{
+    padding: 1rem 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.app_name {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.signup_btn{
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: .8rem 2rem;
+    background-color: var(--black-color);
+    color: var(--white-color);
+    border-radius: 4rem;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 1.2px;
+}
+
+.header_right,.header_left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_png{
+    height: 3.5rem;
+}
+
+.theme_icon{
+    margin-left: 4rem;
+    cursor: pointer;
+}
