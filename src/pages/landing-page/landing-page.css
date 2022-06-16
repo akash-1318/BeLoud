@@ -182,6 +182,7 @@
     text-decoration: underline;
     text-underline-offset: .5rem;
     margin-bottom: 2rem;
+    font-size: 3.2rem;
 }
 
 .logo_png.primary{
@@ -196,6 +197,7 @@
     color: var(--white-color);
     font-family: 'Patrick Hand', cursive;
     letter-spacing: 5px;
+    font-size: 2.4rem;
 }
 
 .connecting_icons {

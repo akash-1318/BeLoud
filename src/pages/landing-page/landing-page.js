@@ -43,7 +43,7 @@ function LandingPage() {
         </div>
       </div>
       <div className="animate_btn-container">
-        <button className="go_down-btn animate-bounce w-6 h-6">
+        <button className="go_down-btn animate-bounce">
           <i class="bx bx-chevrons-down"></i>
         </button>
       </div>
