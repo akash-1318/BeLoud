@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Malayalam&display=swap');
+
 :root {
     --font-color: #464646;
     --back-color: #405fca;
     --primary-color: #8292fd;
+    /* --secondry-color:#f79256; */
+    /* --secondry-color:#fbb13c; */
     --secondry-color:#ff4daf;
     --secondry-text-color:#696b79;
     --dark-secondry-color:#d8d8da;
@@ -24,7 +28,9 @@
     --slider-thumb-bg-color:#636363;
     --white-color : #ffffff;
     --tomato-color : #ff6347;
-    --secondry-light-color : #ffb4dd;
+    --secondry-light-color : #aeb9ff;
+    /* --secondry-light-color : #ffd085; */
+    /* --secondry-light-color : #ffb4dd; */
     --dark-theme : #06060e;
     --black-color : #000;
     --dark-box-shadow : 5px 0px 15px rgb(19 21 39);
@@ -44,7 +50,7 @@
 
 html{
     font-size:62.5%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Anek Malayalam', sans-serif;
     color: var(--font-color);
 }
 

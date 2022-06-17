@@ -1,5 +1,6 @@
 import "./landing-page.css";
 import { Navigation } from "../../components/compIndex";
+import {Link} from "react-router-dom"
 import primary from "../../assets/images/primary.png";
 import img1 from "../../assets/images/img1.png";
 import img2 from "../../assets/images/img2.png";
@@ -18,7 +19,7 @@ function LandingPage() {
         <h1>
           Stay Loud with <span>BeLoud</span>
         </h1>
-        <button className="started_btn">Get Started</button>
+        <Link to="/home"><button className="started_btn">Get Started</button></Link>
       </div>
       <div className="secondry_container">
         <div className="first_left" data-aos="zoom-in" data-aos-delay="200">
