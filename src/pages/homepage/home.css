@@ -1,0 +1,58 @@
+.main__conatiner {
+    display: flex;
+    grid-gap: 1rem;
+    max-width: 1200px;
+    position: relative;
+    margin: auto;
+}
+
+.middle__section {
+    width: 52.5%;
+    height: 120vh;
+    padding: 2rem 0rem;
+    position: relative;
+}
+
+.left__section {
+    width: 20%;
+    padding-top: 2rem;
+}
+
+.right__section {
+    width: 27.5%;
+    padding-top: 2rem;
+}
+
+.filter__container {
+    display: flex;
+    justify-content: space-between;
+    margin: 4rem 0rem;
+    border-radius: 1.2rem;
+}
+
+.trending, .latest {
+    width: 47.5%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    padding: .5rem 0rem;
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--secondry-text-color);
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.trending:hover, .latest:hover {
+    color: var(--primary-color);
+    /* background-color: var(--primary-color); */
+    border-top: 2px solid var(--primary-color);
+    border-bottom: none;
+    transition: .1s ease-in;
+}
+
+.trending > p, .latest > p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: .5rem;
+}

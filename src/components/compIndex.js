@@ -1,1 +1,5 @@
 export {Navigation} from "./navigation/navigation"
+export {Aside} from "./aside/aside"
+export {FollowSuggestion} from "./follow-suggestion/follow-suggestion"
+export {NewPost} from "./new-post/new-post"
+export {Post} from "./post/post"
