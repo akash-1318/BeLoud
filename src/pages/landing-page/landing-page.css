@@ -1,36 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
-.radiant_container{
-    width: 60rem;
-    min-height: 50rem;
-    position: absolute;
-    z-index: -1;
-    top: 0px;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
-    border-bottom-left-radius: 50rem;
-    border-bottom-right-radius: 50rem;
-    background-image: linear-gradient(#8f9effcc, #ff62b8d2);
-    box-shadow: 0px 20px 100px #ff4dafe0, 0px 20px 100px #ff4dafab;
-    opacity: .3;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    text-align: center;
-}
-
 .primary_container{
     margin-bottom: 3rem;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    background-image: linear-gradient(var(--secondry-light-color), var(--white-color));
+    padding: 1rem 2rem;
 }
 
 .primary_container > h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-family: 'Patrick Hand', cursive;
     color: var(--secondry-color);
     font-weight: 600;
-    line-height: 1.2;
     letter-spacing: 10px;
+    margin: 0rem 6rem;
 }
 
 .primary_container > h1 > span {
@@ -67,7 +50,7 @@
 }
 
 .middle_screen {
-    background-image: linear-gradient(45deg,#8f9effcc, #ff62b8d2);
+    background-image: linear-gradient(45deg,var(--primary-color), var(--secondry-color));
     width: 25vw;
     height: 32vw;
     border-radius: 3rem;
@@ -93,7 +76,7 @@
 .first_right-d1 {
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(45deg, var(--secondry-color), var(--primary-color));
+    background-image: linear-gradient(45deg, var(--secondry-color), var(--white-color));
     border-radius: 3rem;
     border-top-left-radius: 40rem;
     border-bottom-right-radius: 8rem;
@@ -127,7 +110,7 @@
 .second_left-d1 {
     height: 90%;
     width: 100%;
-    background-image: linear-gradient(45deg, var(--secondry-color), var(--primary-color));
+    background-image: linear-gradient(45deg, var(--secondry-color), var(--white-color));
     position: absolute;
     bottom: 0px;
     border-radius: 3rem;
@@ -168,7 +151,7 @@
 .final_container {
     width: 90%;
     margin: auto;
-    background-image: linear-gradient(45deg,#8f9effcc, #ff62b8d2, rgb(151 105 74));
+    background-image: linear-gradient(45deg,var(--primary-color), var(--secondry-color), rgb(151 105 74));
     border-radius: 5rem;
     padding: 2rem;
     text-align: center;

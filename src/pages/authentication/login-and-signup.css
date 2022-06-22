@@ -1,0 +1,170 @@
+.main__container {
+    height: 100vh;
+}
+
+.clip {
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(45deg, var(--primary-color), var(--secondry-light-color));
+}
+
+.auth__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Permanent Marker', cursive;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+}
+
+.auth__header > img {
+    height: 3.5rem;
+}
+
+.motto__text {
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    margin: 1rem 0rem;
+}
+
+.form__type {
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: .1rem;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.form__container{
+    width: 100%;
+}
+
+.credentials{
+    padding: 3rem 5rem;
+    width: 45rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    font-size: 1.3rem;
+    background-image: linear-gradient(45deg, var(--secondry-light-color), var(--white-color));
+    border-radius: 1.2rem;
+}
+
+.credentials.dark{
+    box-shadow: var(--dark-box-shadow);
+}
+
+.credentials.dark > div > input {
+    background-color: var(--dark-theme);
+    color: var(--white-color);
+}
+
+.credentials > h1{
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.name__input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cred__input-field{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.cred__input-field > label{
+    display: block;
+    margin-bottom: 2px;
+}
+
+.cred__input-field > input{
+    width: 100%;
+    padding: .8rem 1rem;
+    outline: none;
+    border-bottom: 2px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.cred__input-field > input::placeholder{
+    color: var(--dark-secondry-color);
+}
+
+.remember__checkbox{
+    display: flex;
+    align-items: center;
+}
+
+.remember__checkbox > input{
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+}
+
+.cred__remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot__password{
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.cred__btn{
+    background-color: var(--primary-color);
+}
+
+.primary__btn{
+    width: 100%;
+    padding: 1rem 2rem;
+    text-align: center;
+    background-image: linear-gradient(45deg, var(--primary-color), var(--secondry-light-color));
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.create__new-account{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.create__new-account > i{
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.password__field{
+    position: relative;
+}
+
+.password__field > input{
+    padding-right: 4rem;
+}
+
+.password__field > i{
+    position: absolute;
+    font-size: 2rem;
+    right: 1rem;
+    top: 3rem;
+    cursor: pointer;
+}
+
+.password__field > .wrong__input{
+    border: 1px solid var(--tomato-color);
+}

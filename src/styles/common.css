@@ -6,7 +6,8 @@
     --primary-color: #8292fd;
     /* --secondry-color:#f79256; */
     /* --secondry-color:#fbb13c; */
-    --secondry-color:#ff4daf;
+    /* --secondry-color:#ff4daf; */
+    --secondry-color : #fbb13c;
     --secondry-text-color:#696b79;
     --dark-secondry-color:#d8d8da;
     --dark-secondry-text-color:#3f4049;
@@ -28,8 +29,8 @@
     --slider-thumb-bg-color:#636363;
     --white-color : #ffffff;
     --tomato-color : #ff6347;
-    --secondry-light-color : #aeb9ff;
-    /* --secondry-light-color : #ffd085; */
+    /* --secondry-light-color : #aeb9ff; */
+    --secondry-light-color : #ffd085;
     /* --secondry-light-color : #ffb4dd; */
     --dark-theme : #06060e;
     --black-color : #000;

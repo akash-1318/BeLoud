@@ -1,7 +1,10 @@
 import "./aside.css"
+import { useSelector, useDispatch } from "react-redux";
+import {logout} from "../../features/authSlice"
 import logo from "../../assets/images/logo.png"
 
 function Aside () {
+    const dispatch = useDispatch(); 
     return(
         <aside className="aside">
             <div className="aside__header">
@@ -25,7 +28,9 @@ function Aside () {
                 <i class='bx bxs-user-circle mr-5' ></i>
                     <p>Profile</p>
                 </div>
-                <div className="aside__option">
+                <div className="aside__option" onClick={()=>{
+                    dispatch(logout())
+                }}>
                 <i class='bx bx-log-out-circle mr-5'></i>
                     <p>Logout</p>
                 </div>
