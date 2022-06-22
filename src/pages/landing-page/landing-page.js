@@ -19,7 +19,7 @@ function LandingPage() {
         <h1>
           Stay Loud with <span>BeLoud</span>
         </h1>
-        <Link to="/home"><button className="started_btn">Get Started</button></Link>
+        <Link to="/login"><button className="started_btn">Get Started</button></Link>
       </div>
       <div className="secondry_container">
         <div className="first_left" data-aos="zoom-in" data-aos-delay="200">
