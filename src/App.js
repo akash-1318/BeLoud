@@ -1,7 +1,7 @@
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {LandingPage, Home, Login, Signup} from "./pages/index"
+import {LandingPage, Home, Login, Signup, Profile} from "./pages/index"
 import {Route, Routes} from "react-router-dom"
 import {RequireAuth} from "./utils/requireAuth"
 import MockMan from "mockman-js";
@@ -15,6 +15,11 @@ function App() {
         <Route path="/home" element={
           <RequireAuth>
             <Home/>
+          </RequireAuth>
+        }></Route>
+        <Route path="/profile" element={
+          <RequireAuth>
+            <Profile/>
           </RequireAuth>
         }></Route>
         <Route path="/login" element={<Login/>}></Route>

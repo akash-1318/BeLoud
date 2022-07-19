@@ -1,0 +1,18 @@
+.hr__style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondry-color);
+}
+
+.hr__style > p{
+    margin: 0rem 1rem;
+}
+
+.hr {
+    width: 25rem;
+    border: 1px solid var(--primary-color);
+}
