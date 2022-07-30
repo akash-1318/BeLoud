@@ -38,7 +38,7 @@ function FollowSuggestion() {
           {followSuggestion.map((user) => {
             return (
               <div className="profile__container">
-                <div className="profile__img">
+                <div className="profile__img" onClick={() => handleProfileClick(user)}>
                   <img src={user.profilePic} />
                 </div>
                 <div className="profile__name" onClick={() => handleProfileClick(user)}>
