@@ -88,7 +88,7 @@ function Login() {
             <button
               className="primary__btn"
               onClick={() => {
-                setLoginCred({username : "adarshbalika", password : "adarshBalika123"})
+                setLoginCred({username : "akash1307", password : "akashsharma123"})
               }}
             >
               Login as guest

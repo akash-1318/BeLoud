@@ -4,16 +4,17 @@ import {
   FollowSuggestion,
   Post,
   UserProfile,
+  OtherProfiles
 } from "../../components/compIndex";
 
-function Profile() {
+function AnyProfile() {
   return (
     <div className="main__conatiner">
       <section className="left__section">
         <Aside />
       </section>
       <section className="middle__section">
-        <UserProfile />
+        <OtherProfiles/>
       </section>
       <section className="right__section">
         <FollowSuggestion />
@@ -22,4 +23,4 @@ function Profile() {
   );
 }
 
-export { Profile };
+export { AnyProfile };

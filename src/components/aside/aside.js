@@ -13,10 +13,12 @@ function Aside () {
                 <p>BeLoud</p>
             </div>
             <main className="aside__options">
+                <NavLink to="/home">
                 <div className="aside__option">
                 <i class='bx bxs-home mr-5'></i>
                     <p className="">Feed</p>
                 </div>
+                </NavLink>
                 <div className="aside__option">
                 <i class='bx bxs-compass mr-5' ></i>
                     <p>Explore</p>
