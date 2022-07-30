@@ -6,7 +6,7 @@ const initialState = {
     authToken : localStorage.getItem("TOKEN") ?? "",
     authStatus : localStorage.getItem("TOKEN") ? true : false,
     status : "idle",
-    user : null,
+    user : JSON.parse(localStorage.getItem("USER")) || null,
 }
 
 export const signupAuth = createAsyncThunk("auth/signupAuth", async({firstname, lastname, username, password}) => {
