@@ -106,4 +106,5 @@
 .emoji__container {
     position: absolute;
     left: 8rem;
+    z-index: 1111;
 }

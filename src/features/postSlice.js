@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUserPosts, getAllPosts, getSingleUserPosts} from "../services/serviceExporter"
+import {getUserPosts, getAllPosts, getSingleUserPosts, addPost} from "../services/serviceExporter"
 
 const initialState = {
     allPosts : [],
@@ -31,6 +31,17 @@ export const getSingleUserPostsData = createAsyncThunk("post/getSingleUserPostsD
     try{
         const resp = await getSingleUserPosts(username)
         console.log(resp.data)
+        return resp.data
+    } catch(error){
+        return rejectWithValue(error)
+    }
+})
+
+export const addUserPost = createAsyncThunk("post/addUserPost", async(uploadPost) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        const resp = await addPost(uploadPost,authToken)
+        console.log(resp.data.posts)
         return resp.data
     } catch(error){
         return rejectWithValue(error)
@@ -74,6 +85,16 @@ export const postSlice = createSlice({
         [getSingleUserPostsData.rejected] : (state) => {
             state.postStatus = "rejected"
             state.singleUserPosts = action.payload
+        },
+        [addUserPost.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [addUserPost.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.allPosts = action.payload.posts
+        },
+        [addUserPost.rejected] : (state) => {
+            state.postStatus = "rejected"
         }
     }
 })

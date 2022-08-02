@@ -5,12 +5,19 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Picker from "emoji-picker-react";
+import {addUserPost} from "../../features/postSlice"
+import { useEffect } from "react";
 
 function NewPost() {
-  const { user } = useSelector((store) => store.reduxStore);
+  const { user, authToken } = useSelector((store) => store.reduxStore);
   const [postFile, setPostFile] = useState(null);
   const [chosenEmoji, setChosenEmoji] = useState("");
   const [showEmojis, setSHowEmojis] = useState(false);
+  const [uploadPost, setUplaodPost] = useState({
+    content : "",
+    pic : null
+  })
+  const dispatch = useDispatch();
 
   const onFileChange = async (e) => {
     let file = e.target.files[0];
@@ -32,6 +39,22 @@ function NewPost() {
     setSHowEmojis(false);
   };
 
+  const handlePostUplaod = () => {
+    if(uploadPost.content !== "" || uploadPost.pic !== null){
+      dispatch(addUserPost(uploadPost))
+      setChosenEmoji("")
+      setPostFile(null)
+    }
+  }
+
+  useEffect(() => {
+    setUplaodPost({...uploadPost, pic : postFile})
+  },[postFile])
+
+  useEffect(() => {
+    setUplaodPost({...uploadPost, content : chosenEmoji})
+  },[chosenEmoji])
+
   return (
     <div className="new__post-container">
       <div className="new__post-left">
@@ -43,7 +66,9 @@ function NewPost() {
           className="post__text"
           placeholder="What's happening?"
           value={chosenEmoji}
-          onChange={(e) => setChosenEmoji(e.target.value)}
+          onChange={(e) => {
+            setChosenEmoji(e.target.value)
+          }}
         ></textarea>
         {postFile ? (
           <>
@@ -77,7 +102,7 @@ function NewPost() {
             className="post__icons"
             onClick={(e) => setSHowEmojis(!showEmojis)}
           />
-          <AddCircleIcon className="post__btn" />
+          <AddCircleIcon className="post__btn" onClick={() => handlePostUplaod()} />
         </div>
       </div>
     </div>
