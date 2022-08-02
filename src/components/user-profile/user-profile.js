@@ -11,7 +11,7 @@ import Loader from "react-js-loader";
 function UserProfile() {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.reduxStore);
-  const { singleUserPosts } = useSelector((store) => store.post);
+  const { singleUserPosts, allPosts } = useSelector((store) => store.post);
   const { loader } = useSelector((store) => store.additional);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function UserProfile() {
 
   useEffect(() => {
     dispatch(getSingleUserPostsData(user.username));
-  }, [user.username]);
+  }, [user.username, allPosts]);
 
   let reversePostsData = [...singleUserPosts].reverse()
 
