@@ -1,12 +1,14 @@
 import "./post.css";
 import {useSelector, useDispatch} from "react-redux"
 import { useState } from "react";
+import {deleteUserPost} from "../../features/postSlice"
 
 function Post({post}) {
+  const dispatch = useDispatch()
   const {user} = useSelector((store) => store.reduxStore)
   const {allUserData} = useSelector((store) => store.user)
   const {allPosts} = useSelector((store) => store.post)
-  const {content, createdAt, username,pic } = post
+  const {content, createdAt, username,pic, _id } = post
   const [openMenu, setOpenMenu] = useState(false)
 
   const date = new Date(createdAt)
@@ -19,8 +21,6 @@ function Post({post}) {
   ];
   
   let userInfo = allUserData.find((userData) => userData.username === post.username)
-
-  console.log(pic)
 
   return (
     <div className="post__container">
@@ -45,7 +45,7 @@ function Post({post}) {
         <div className="post__menu-container">
           <ul className="menu__list">
             <li> <i class='bx bxs-trash-alt'></i> Edit</li>
-            <li> <i class='bx bxs-edit'></i> Delete</li>
+            <li onClick={() => dispatch(deleteUserPost(_id))}> <i class='bx bxs-edit'></i> Delete</li>
           </ul>
         </div>
         </>) : null}

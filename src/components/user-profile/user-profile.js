@@ -27,7 +27,7 @@ function UserProfile() {
     dispatch(getSingleUserPostsData(user.username));
   }, [user.username]);
 
-  console.log(singleUserPosts);
+  let reversePostsData = [...singleUserPosts].reverse()
 
   return (
     <>
@@ -70,9 +70,9 @@ function UserProfile() {
                 <p>Posts</p>
                 <hr className="hr" />
               </div>
-              {singleUserPosts.length ? (
+              {reversePostsData.length ? (
                 <>
-                  {singleUserPosts.map((post) => {
+                  {reversePostsData.map((post) => {
                     return <Post key={post._id} post={post} />;
                   })}
                 </>

@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUserPosts, getAllPosts, getSingleUserPosts, addPost} from "../services/serviceExporter"
+import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost} from "../services/serviceExporter"
 
 const initialState = {
     allPosts : [],
@@ -42,6 +42,19 @@ export const addUserPost = createAsyncThunk("post/addUserPost", async(uploadPost
     try{
         const resp = await addPost(uploadPost,authToken)
         console.log(resp.data.posts)
+        return resp.data
+    } catch(error){
+        return rejectWithValue(error)
+    }
+})
+
+export const deleteUserPost = createAsyncThunk("post/deleteUserPost", async(postId) => {
+    const authToken = localStorage.getItem("TOKEN");
+    console.log(postId)
+    console.log(authToken)
+    try{
+        const resp = await deletePost(postId, authToken)
+        console.log(resp.data)
         return resp.data
     } catch(error){
         return rejectWithValue(error)
@@ -94,6 +107,16 @@ export const postSlice = createSlice({
             state.allPosts = action.payload.posts
         },
         [addUserPost.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [deleteUserPost.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [deleteUserPost.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.allPosts = action.payload.posts
+        },
+        [deleteUserPost.rejected] : (state) => {
             state.postStatus = "rejected"
         }
     }

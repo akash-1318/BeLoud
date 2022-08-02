@@ -20,7 +20,7 @@ function Home() {
     dispatch(getAllPostsData())
   },[authToken])
 
-  console.log(allPosts)
+  let reversePostsData = [...allPosts].reverse()
 
   return (
     <div className="main__conatiner">
@@ -43,9 +43,9 @@ function Home() {
             </p>
           </div>
         </div>
-        {allPosts.length > 0 ? (
+        {reversePostsData.length > 0 ? (
           <>
-          {allPosts.map((post) => {
+          {reversePostsData.map((post) => {
             return(
               <Post
               key={post._id}

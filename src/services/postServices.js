@@ -20,3 +20,10 @@ export const addPost = (postData,authToken) =>
       },
     }
   );
+
+
+export const deletePost = (postId, authToken) => axios.delete(`/api/posts/${postId}`,{
+    headers: {
+        authorization: authToken,
+      },
+})  

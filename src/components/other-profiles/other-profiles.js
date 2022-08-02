@@ -33,7 +33,7 @@ function OtherProfiles() {
     dispatch(getSingleUserPostsData(username))
   }, [username, allUserData]);
 
-  console.log(singleUserPosts)
+  let reversePostsData = [...singleUserPosts].reverse()
 
   return (
     <>
@@ -78,9 +78,9 @@ function OtherProfiles() {
                 <p>Posts</p>
                 <hr className="hr" />
               </div>
-              {singleUserPosts.length > 0 ? (
+              {reversePostsData.length > 0 ? (
                 <>
-                {singleUserPosts.map((post) => {
+                {reversePostsData.map((post) => {
                   return(
                     <Post 
                     key = {post._id}
