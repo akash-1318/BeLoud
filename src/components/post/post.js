@@ -2,6 +2,7 @@ import "./post.css";
 import {useSelector, useDispatch} from "react-redux"
 import { useState } from "react";
 import {deleteUserPost} from "../../features/postSlice"
+import {handleModalState, setPostId} from "../../features/additionalSlice"
 
 function Post({post}) {
   const dispatch = useDispatch()
@@ -44,7 +45,12 @@ function Post({post}) {
         {openMenu ? (<>
         <div className="post__menu-container">
           <ul className="menu__list">
-            <li> <i class='bx bxs-trash-alt'></i> Edit</li>
+            <li onClick={() => {
+              dispatch(handleModalState())
+              setOpenMenu(!openMenu)
+              dispatch(setPostId(post._id))
+              console.log(post._id)
+            }}> <i class='bx bxs-trash-alt'></i> Edit</li>
             <li onClick={() => dispatch(deleteUserPost(_id))}> <i class='bx bxs-edit'></i> Delete</li>
           </ul>
         </div>

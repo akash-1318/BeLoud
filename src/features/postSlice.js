@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost} from "../services/serviceExporter"
+import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost} from "../services/serviceExporter"
 
 const initialState = {
     allPosts : [],
@@ -19,7 +19,6 @@ export const getUserPostsData = createAsyncThunk("post/getUserPostsData", async(
 export const getAllPostsData = createAsyncThunk("post/getAllPostsData", async() => {
     try{
         const resp = await getAllPosts()
-        console.log(resp.data.posts)
         return resp.data
     } catch(error){
         return rejectWithValue(error)
@@ -27,10 +26,8 @@ export const getAllPostsData = createAsyncThunk("post/getAllPostsData", async() 
 })
 
 export const getSingleUserPostsData = createAsyncThunk("post/getSingleUserPostsData", async(username) =>{
-    console.log(username)
     try{
         const resp = await getSingleUserPosts(username)
-        console.log(resp.data)
         return resp.data
     } catch(error){
         return rejectWithValue(error)
@@ -50,11 +47,19 @@ export const addUserPost = createAsyncThunk("post/addUserPost", async(uploadPost
 
 export const deleteUserPost = createAsyncThunk("post/deleteUserPost", async(postId) => {
     const authToken = localStorage.getItem("TOKEN");
-    console.log(postId)
-    console.log(authToken)
     try{
         const resp = await deletePost(postId, authToken)
         console.log(resp.data)
+        return resp.data
+    } catch(error){
+        return rejectWithValue(error)
+    }
+})
+
+export const editUserPost = createAsyncThunk("post/editUserPost", async({uploadPost, postIdToUpdate}) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        const resp = await editPost({uploadPost, postIdToUpdate}, authToken)
         return resp.data
     } catch(error){
         return rejectWithValue(error)
@@ -117,6 +122,16 @@ export const postSlice = createSlice({
             state.allPosts = action.payload.posts
         },
         [deleteUserPost.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [editUserPost.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [editUserPost.fulfilled] : (state,action) => {
+            state.postStatus = "fulfilled"
+            state.allPosts = action.payload.posts
+        },
+        [editUserPost.rejected] : (state) => {
             state.postStatus = "rejected"
         }
     }

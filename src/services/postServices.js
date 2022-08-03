@@ -8,11 +8,11 @@ export const getAllPosts = () => axios.get("/api/posts");
 export const getSingleUserPosts = (username) =>
   axios.get(`/api/posts/user/${username}`);
 
-export const addPost = (postData,authToken) =>
+export const addPost = (postData, authToken) =>
   axios.post(
     "/api/posts",
     {
-        postData,
+      postData,
     },
     {
       headers: {
@@ -21,9 +21,21 @@ export const addPost = (postData,authToken) =>
     }
   );
 
-
-export const deletePost = (postId, authToken) => axios.delete(`/api/posts/${postId}`,{
+export const deletePost = (postId, authToken) =>
+  axios.delete(`/api/posts/${postId}`, {
     headers: {
-        authorization: authToken,
-      },
-})  
+      authorization: authToken,
+    },
+  });
+
+
+export const editPost = ({uploadPost, postIdToUpdate}, authToken) => 
+    axios.post(`/api/posts/edit/${postIdToUpdate}`,
+    {
+        postData : uploadPost
+    },
+    {
+        headers:{
+            authorization : authToken
+        }
+    })

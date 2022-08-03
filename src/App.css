@@ -1,2 +1,7 @@
 @import url(styles/common.css);
 @import url(styles/responsive.css);
+
+
+.App {
+    position: relative;
+}

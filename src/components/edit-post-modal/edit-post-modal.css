@@ -1,0 +1,24 @@
+.modal__primary-container{
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 11;
+}
+
+.new__post-container.edit__post-modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    width: 60rem;
+}
+
+.post__btn.edit__modal-btn{
+    margin: .5rem 1.5rem;
+}
+
+.emoji__container.update-post{
+    bottom: 5rem;
+}

@@ -1,7 +1,9 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 
 const initialState = {
-    loader : false
+    loader : false,
+    modalState : false,
+    postIdToUpdate : null,
 }
 
 const additionalSlice = createSlice({
@@ -15,10 +17,16 @@ const additionalSlice = createSlice({
         closeLoader : (state) => {
             console.log("lodader false")
             state.loader = false
+        },
+        handleModalState : (state) => {
+            state.modalState = !state.modalState
+        },
+        setPostId : (state, action) => {
+            state.postIdToUpdate = action.payload
         }
     },
 })
 
-export const {openLoader, closeLoader} = additionalSlice.actions
+export const {openLoader, closeLoader, handleModalState, setPostId} = additionalSlice.actions
 
 export default additionalSlice.reducer
