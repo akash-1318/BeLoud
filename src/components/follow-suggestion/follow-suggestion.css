@@ -1,7 +1,6 @@
 .follow__conatiner {
-    position: sticky;
-    top: 1rem;
-    width: 100%;
+    position: fixed;
+    width: 24.8%;
     background-image: linear-gradient(to right bottom, var(--secondry-light-color), var(--white-color));
     min-height: 37rem;
     padding: 1rem;
