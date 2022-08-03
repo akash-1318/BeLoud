@@ -6,8 +6,11 @@ import { useState } from "react";
 import Loader from "react-js-loader";
 import {Post} from ".././compIndex"
 import {openLoader, closeLoader} from "../../features/additionalSlice"
+import {getSingleUserPostsData} from "../../features/postSlice"
+import noPost from "../../assets/images/zero-post.jpg"
 
 function OtherProfiles() {
+  const {singleUserPosts} = useSelector((store) => store.post)
   const dispatch = useDispatch();
   const { username } = useParams();
   const { user } = useSelector((store) => store.reduxStore);
@@ -27,7 +30,10 @@ function OtherProfiles() {
   useEffect(() => {
     let otherUserinfo = allUserData.find((user) => user.username === username);
     setOtherUser(otherUserinfo);
+    dispatch(getSingleUserPostsData(username))
   }, [username, allUserData]);
+
+  let reversePostsData = [...singleUserPosts].reverse()
 
   return (
     <>
@@ -72,7 +78,23 @@ function OtherProfiles() {
                 <p>Posts</p>
                 <hr className="hr" />
               </div>
-              <Post />
+              {reversePostsData.length > 0 ? (
+                <>
+                {reversePostsData.map((post) => {
+                  return(
+                    <Post 
+                    key = {post._id}
+                    post = {post}
+                    />
+                  )
+                })}
+                </>
+              ) : (<>
+              <div className="zero__post-container">
+              <img src={noPost}/>
+              <h1 className="no__post-text">Be loud! {otherUser.firstName}</h1>
+              </div>
+              </>)}
             </div>
           </div>
           )}

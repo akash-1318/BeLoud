@@ -8,13 +8,17 @@ import MockMan from "mockman-js";
 import {getUsersData} from "./features/userSlice"
 import { useEffect } from "react";
 import {useSelector, useDispatch} from "react-redux"
+import {EditPostModal} from "./components/compIndex"
+import {getAllPostsData} from "./features/postSlice"
 
 function App() {
   const {authToken, user} = useSelector((store) => store.reduxStore)
+  const {modalState} = useSelector((store) => store.additional)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUsersData())
+    dispatch(getAllPostsData())
   },[authToken])
 
   return (
@@ -41,6 +45,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/mock" element={<MockMan />}></Route>
       </Routes>
+      {modalState ? (<EditPostModal/>) : null}
     </div>
   );
 }

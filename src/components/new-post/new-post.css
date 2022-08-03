@@ -2,7 +2,7 @@
     width: 100%;
     border-radius: 1.2rem;
     display: flex;
-    padding: 1rem;
+    padding: 1.5rem 3rem 1.5rem 1.5rem;
     background-image: linear-gradient(45deg, var(--secondry-light-color), var(--white-color));
     border-top: 2px solid var(--secondry-light-color);
     border-right: 2px solid var(--secondry-light-color);
@@ -15,10 +15,16 @@
     border-radius: 50%;
     background-color: var(--white-color);
     margin-right: 1rem;
+    object-fit: cover;
+}
+
+.new__post-left > img {
+    border-radius: 50%;
 }
 
 .new__post-right {
     width: 90%;
+    position: relative;
 }
 
 .post__text {
@@ -29,6 +35,7 @@
     outline: none;
     border-radius: 1.2rem;
     resize: none;
+    overflow-y: hidden;
 }
 
 .post__options {
@@ -36,7 +43,7 @@
     align-items: center;
 }
 
-.post__options > .post__icons {
+.post__options > .post__icons, .post__icon-label > .post__icons {
     height: 2.5rem;
     width: 2.5rem;
     margin-right: 1.5rem;
@@ -59,6 +66,45 @@
     cursor: pointer;
 }
 
-.post__options > .post__btn:hover {
+.post__options > .post__btn:hover, .post__icon-label > .post__icons:hover {
     color: var(--primary-color);
 } 
+
+.image-upload>input {
+    display: none;
+  }
+
+.file__container {
+      position: relative;
+      margin: 1.5rem 0rem;
+      width: 100%;
+  }
+
+.file__container > img {
+    border-radius: 2rem;
+    height: 100%;
+    width: 100%;
+} 
+
+.cancel__btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background-color: var(--primary-backgroud-color);
+    opacity: .4;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    cursor: pointer;
+}
+
+.emoji__container {
+    position: absolute;
+    left: 8rem;
+    z-index: 1111;
+}

@@ -76,3 +76,12 @@
 .post__conatiner {
     text-align: left;
 }
+
+.zero__post-container {
+    text-align: center;
+}
+
+.zero__post-container > img {
+    width: 25rem;
+    margin: 1rem auto;
+}

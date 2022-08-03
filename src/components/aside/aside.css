@@ -1,6 +1,7 @@
 .aside {
-    position: sticky;
+    position: fixed;
     top: 1rem;
+    width: 16.8%;
 }
 
 .aside__header {

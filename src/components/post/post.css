@@ -11,6 +11,7 @@
 
 .inner__post-container {
     display: flex;
+    position: relative;
 }
 
 .post__name {
@@ -48,4 +49,62 @@
 
 .post__footer-icon:hover{
     color: var(--secondry-color);
+}
+
+.post__menu {
+    position: absolute;
+    right: 1rem;
+    font-size: 2.5rem;
+    color: var(--secondry-color);
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.post__menu:hover{
+    transition: .2s ease-in;
+    background-color: #ffeac8;
+    color: var(--primary-color);
+}
+
+.post__menu-container {
+    padding: 1rem .8rem;
+    position: absolute;
+    right: 6rem;
+    top: 0rem;
+    border-radius: 1rem;
+    width: 15rem;
+    background-color: var(--white-color);
+    border: 1px solid var(--secondry-light-color);
+}
+
+.menu__list {
+    font-size: 1.5rem;
+}
+
+.menu__list > li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: .5rem;
+    border-radius: 5px;
+}
+
+.menu__list > li:hover{
+    background-color:var(--secondry-light-color);
+    color: var(--white-color);
+}
+
+.menu__list > li > i{
+    margin-right: 1rem;
+}
+
+.post__pic {
+    border-radius: 2rem;
+    padding: 0rem 1rem 1.5rem 1rem;
+    width: 100%;
 }

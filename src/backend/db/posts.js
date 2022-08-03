@@ -10,9 +10,10 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "Hard work beats talent when talent doesn't work hard.",
+    pic : '',
     likes: {
-      likeCount: 0,
+      likeCount: 2,
       likedBy: [],
       dislikedBy: [],
     },
@@ -24,7 +25,7 @@ export const posts = [
       {
         _id: uuid(),
         username : "akash1307",
-        text : "nice",
+        text : "🙌🏻❤",
         votes : {
           upvotedBy : [],
           downvotedBy : [],
@@ -33,7 +34,7 @@ export const posts = [
       {
         _id: uuid(),
         username : "rajB",
-        text : "Really good",
+        text : "nice pic dear",
         votes : {
           upvotedBy : [],
           downvotedBy : [],
@@ -45,9 +46,10 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "Life me career stress nhi, career stress me thodi bohot life chal rhi hai 😭😭😭",    
+    pic : '',
     likes: {
-      likeCount: 0,
+      likeCount: 3,
       likedBy: [],
       dislikedBy: [],
     },
@@ -59,7 +61,7 @@ export const posts = [
       {
         _id: uuid(),
         username : "adarshbalika",
-        text : "nice",
+        text : "🥺🥺🥺",
         votes : {
           upvotedBy : [],
           downvotedBy : [],
@@ -68,7 +70,7 @@ export const posts = [
       {
         _id: uuid(),
         username : "rajB",
-        text : "Really good",
+        text : "Itna bhi sach nhi bolna tha 😭",
         votes : {
           upvotedBy : [],
           downvotedBy : [],
@@ -80,9 +82,10 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "I'm tired of chasing money when will money start chasing me. 🥺👉👈",
+    pic : '',
     likes: {
-      likeCount: 0,
+      likeCount: 1,
       likedBy: [],
       dislikedBy: [],
     },
@@ -94,7 +97,7 @@ export const posts = [
       {
         _id: uuid(),
         username : "adarshbalika",
-        text : "nice",
+        text : "damn buddy 😂",
         votes : {
           upvotedBy : [],
           downvotedBy : [],
@@ -103,7 +106,7 @@ export const posts = [
       {
         _id: uuid(),
         username : "akash1307",
-        text : "Really good",
+        text : "dil pe lagi yeh baat 😫",
         votes : {
           upvotedBy : [],
           downvotedBy : [],
@@ -115,7 +118,8 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "That awkward moment between birth and death. 🤌🏻",
+    pic : '',
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -129,7 +133,7 @@ export const posts = [
       {
         _id: uuid(),
         username : "adarshbalika",
-        text : "nice",
+        text : "😂😂😂",
         votes : {
           upvotedBy : [],
           downvotedBy : [],
@@ -138,7 +142,7 @@ export const posts = [
       {
         _id: uuid(),
         username : "akash1307",
-        text : "Really good",
+        text : "",
         votes : {
           upvotedBy : [],
           downvotedBy : [],
@@ -150,9 +154,10 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "Money has lot to do with how you behave and little to do with how smart you are.",
+    pic : '',
     likes: {
-      likeCount: 0,
+      likeCount: 3,
       likedBy: [],
       dislikedBy: [],
     },
