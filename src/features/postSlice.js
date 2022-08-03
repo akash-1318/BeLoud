@@ -7,62 +7,62 @@ const initialState = {
     singleUserPosts : [],
 };
 
-export const getUserPostsData = createAsyncThunk("post/getUserPostsData", async(username) => {
+export const getUserPostsData = createAsyncThunk("post/getUserPostsData", async(username, thunkAPI) => {
     try{
         const postsResp = await getUserPosts(username)
         return postsResp.data.posts;
     }catch(error){
-        return rejectWithValue(error)
+        return thunkAPI.rejectWithValue(error)
     }
 })
 
-export const getAllPostsData = createAsyncThunk("post/getAllPostsData", async() => {
+export const getAllPostsData = createAsyncThunk("post/getAllPostsData", async(thunkAPI) => {
     try{
         const resp = await getAllPosts()
         return resp.data
     } catch(error){
-        return rejectWithValue(error)
+        return thunkAPI.rejectWithValue(error)
     }
 })
 
-export const getSingleUserPostsData = createAsyncThunk("post/getSingleUserPostsData", async(username) =>{
+export const getSingleUserPostsData = createAsyncThunk("post/getSingleUserPostsData", async(username,thunkAPI) =>{
     try{
         const resp = await getSingleUserPosts(username)
         return resp.data
     } catch(error){
-        return rejectWithValue(error)
+        return thunkAPI.rejectWithValue(error)
     }
 })
 
-export const addUserPost = createAsyncThunk("post/addUserPost", async(uploadPost) => {
+export const addUserPost = createAsyncThunk("post/addUserPost", async(uploadPost,thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
     try{
         const resp = await addPost(uploadPost,authToken)
         console.log(resp.data.posts)
         return resp.data
     } catch(error){
-        return rejectWithValue(error)
+        return thunkAPI.rejectWithValue(error)
     }
 })
 
-export const deleteUserPost = createAsyncThunk("post/deleteUserPost", async(postId) => {
+export const deleteUserPost = createAsyncThunk("post/deleteUserPost", async(postId,thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
     try{
         const resp = await deletePost(postId, authToken)
         console.log(resp.data)
         return resp.data
     } catch(error){
-        return rejectWithValue(error)
+        return thunkAPI.rejectWithValue(error)
     }
 })
 
-export const editUserPost = createAsyncThunk("post/editUserPost", async({uploadPost, postIdToUpdate}) => {
+export const editUserPost = createAsyncThunk("post/editUserPost", async({uploadPost, postIdToUpdate},thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
     try{
         const resp = await editPost({uploadPost, postIdToUpdate}, authToken)
         return resp.data
     } catch(error){
-        return rejectWithValue(error)
+        return thunkAPI.rejectWithValue(error)
     }
 })
 

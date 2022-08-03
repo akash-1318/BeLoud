@@ -9,21 +9,21 @@ const initialState = {
     user : JSON.parse(localStorage.getItem("USER")) || null,
 }
 
-export const signupAuth = createAsyncThunk("auth/signupAuth", async({firstname, lastname, username, password}) => {
+export const signupAuth = createAsyncThunk("auth/signupAuth", async({firstname, lastname, username, password},thunkAPI) => {
     try{
         const resp = await signupService(firstname, lastname, username, password)
           return resp.data
     } catch(error){
-        return rejectWithValue(error)
+        return thunkAPI.rejectWithValue(error)
     }
 })
 
-export const signinAuth = createAsyncThunk("auth/signinAuth", async({username, password}) => {
+export const signinAuth = createAsyncThunk("auth/signinAuth", async({username, password},thunkAPI) => {
     try{
         const resp = await signinService(username, password)
         return resp.data
     } catch(error){
-        return rejectWithValue(error)
+        return thunkAPI.rejectWithValue(error)
     }
 })
 

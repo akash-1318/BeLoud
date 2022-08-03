@@ -6,12 +6,12 @@ const initialState = {
     userStatus : "",
 };
 
-export const getUsersData = createAsyncThunk("user/getUsersData", async() => {
+export const getUsersData = createAsyncThunk("user/getUsersData", async(thunkAPI) => {
     try{
         const usersResp = await getUsers()
         return usersResp.data
     }catch(error){
-        return rejectWithValue(error)
+        return thunkAPI.rejectWithValue(error)
     }
 })
 
