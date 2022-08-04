@@ -7,4 +7,6 @@ export {
   addPost,
   deletePost,
   editPost,
+  likePost,
+  dislikePost,
 } from "./postServices";

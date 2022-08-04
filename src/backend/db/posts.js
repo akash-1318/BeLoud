@@ -13,8 +13,19 @@ export const posts = [
       "Hard work beats talent when talent doesn't work hard.",
     pic : '',
     likes: {
-      likeCount: 2,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: uuid(),
+          firstName: "Ayush",
+          lastName: "Sharma",
+          username: "ayush12",
+          password: "ayushsharma12345",
+          bio : "Enjoying childhood",
+          link : "",
+          profilePic : "https://cutewallpaper.org/21/anime-profile-pictures-boy/Boy-Forum-Avatar-Profile-Photo-ID-193352-Avatar-Abyss.jpg",
+        }
+      ],
       dislikedBy: [],
     },
     username: "adarshbalika",
@@ -49,8 +60,29 @@ export const posts = [
     "Life me career stress nhi, career stress me thodi bohot life chal rhi hai 😭😭😭",    
     pic : '',
     likes: {
-      likeCount: 3,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: [
+        {
+          _id: uuid(),
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          password: "adarshBalika123",
+          bio : "Web devi",
+          link : "https://adarshbalika.netlify.app/",
+          profilePic : "https://profilepicture7.com/img/img_dongman/3/-1402673926.jpg",
+        },
+        {
+          _id: uuid(),
+          firstName: "Raj",
+          lastName: "Bhinde",
+          username: "rajB",
+          password: "rajbhinde123",
+          bio : "Learner | Web Development",
+          link : "https://rajbhinde-profile.netlify.app/",
+          profilePic : "https://i.pinimg.com/736x/cc/e1/db/cce1db594930d2217fc4f484434742d9.jpg",
+        }
+      ],
       dislikedBy: [],
     },
     username: "akash1307",
@@ -86,7 +118,18 @@ export const posts = [
     pic : '',
     likes: {
       likeCount: 1,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: uuid(),
+          firstName: "Ohm",
+          lastName: "Sharma",
+          username: "Ohmi",
+          password: "ohmi123",
+          bio : "Investing",
+          link : "",
+          profilePic : "https://cutewallpaper.org/21/anime-profile-pictures-boy/Original-Forum-Avatar-Profile-Photo-ID-89615-Avatar-Abyss.png",
+        }
+      ],
       dislikedBy: [],
     },
     username: "rajB",
@@ -157,8 +200,19 @@ export const posts = [
       "Money has lot to do with how you behave and little to do with how smart you are.",
     pic : '',
     likes: {
-      likeCount: 3,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: uuid(),
+          firstName: "Raj",
+          lastName: "Bhinde",
+          username: "rajB",
+          password: "rajbhinde123",
+          bio : "Learner | Web Development",
+          link : "https://rajbhinde-profile.netlify.app/",
+          profilePic : "https://i.pinimg.com/736x/cc/e1/db/cce1db594930d2217fc4f484434742d9.jpg",
+        }
+      ],
       dislikedBy: [],
     },
     username: "akash1307",

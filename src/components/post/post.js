@@ -1,7 +1,7 @@
 import "./post.css";
 import {useSelector, useDispatch} from "react-redux"
 import { useState } from "react";
-import {deleteUserPost} from "../../features/postSlice"
+import {deleteUserPost, userDislikedPost, userLikedPost} from "../../features/postSlice"
 import {handleModalState, setPostId} from "../../features/additionalSlice"
 
 function Post({post}) {
@@ -9,7 +9,7 @@ function Post({post}) {
   const {user} = useSelector((store) => store.reduxStore)
   const {allUserData} = useSelector((store) => store.user)
   const {allPosts} = useSelector((store) => store.post)
-  const {content, createdAt, username,pic, _id } = post
+  const {content, createdAt, username,pic, _id,likes } = post
   const [openMenu, setOpenMenu] = useState(false)
 
   const date = new Date(createdAt)
@@ -22,6 +22,8 @@ function Post({post}) {
   ];
   
   let userInfo = allUserData.find((userData) => userData.username === post.username)
+
+  let likedUser = likes.likedBy.some((likedUser) => likedUser.username === user.username)
 
   return (
     <div className="post__container">
@@ -63,13 +65,22 @@ function Post({post}) {
         <img src={pic} className="post__pic"/>
       </div>
       <div className="post__footer">
-          <div className="post__footer-icon">
-          <i class='bx bx-heart'></i>
-          <p> Like </p>
+          <div className={`post__footer-icon ${ likedUser ? "liked__post" : "not__liked"}`}
+          onClick={() => {
+            if(likedUser){
+              dispatch(userDislikedPost(_id))
+            } else{
+              dispatch(userLikedPost(_id))
+            }
+          }}>
+            {likedUser ? (<i class='bx bxs-heart'></i>) : (<i class='bx bx-heart'></i>)}
+          <p> {likes.likeCount} </p>
           </div>
           <div className="post__footer-icon">
-          <i class='bx bx-bookmarks' ></i>
-          <p>Bookmark </p>
+          <i class='bx bx-message-rounded'></i>
+          </div>
+          <div className="post__footer-icon bookmark">
+          <i class='bx bxs-bookmarks'></i>
           </div>
       </div>
     </div>

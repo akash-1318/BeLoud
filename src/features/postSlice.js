@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost} from "../services/serviceExporter"
+import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost, likePost, dislikePost} from "../services/serviceExporter"
 
 const initialState = {
     allPosts : [],
@@ -65,6 +65,32 @@ export const editUserPost = createAsyncThunk("post/editUserPost", async({uploadP
         return thunkAPI.rejectWithValue(error)
     }
 })
+
+export const userLikedPost = createAsyncThunk("post/userLikedPost", async(postId, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        console.log(postId)
+        const resp = await likePost(postId, authToken)
+        console.log(resp.data.posts)
+        return resp.data.posts
+    } catch(error){
+        return thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const userDislikedPost = createAsyncThunk("post/userDislikedPost", async(postId, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        console.log(postId)
+        const resp = await dislikePost(postId, authToken)
+        console.log(resp.data.posts)
+        return resp.data.posts
+    } catch(error){
+        return thunkAPI.rejectWithValue(error)
+    }
+})
+
+
 
 export const postSlice = createSlice({
     name : "post",
@@ -132,6 +158,26 @@ export const postSlice = createSlice({
             state.allPosts = action.payload.posts
         },
         [editUserPost.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [userLikedPost.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [userLikedPost.fulfilled] : (state,action) => {
+            state.postStatus = "fulfilled"
+            state.allPosts = action.payload
+        },
+        [userLikedPost.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [userDislikedPost.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [userDislikedPost.fulfilled] : (state,action) => {
+            state.postStatus = "fulfilled"
+            state.allPosts = action.payload
+        },
+        [userDislikedPost.rejected] : (state) => {
             state.postStatus = "rejected"
         }
     }
