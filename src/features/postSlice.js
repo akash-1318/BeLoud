@@ -1,10 +1,11 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost, likePost, dislikePost} from "../services/serviceExporter"
+import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost, likePost, dislikePost, addBookmark, getBookmarkedPosts, removeBookmarkedPost} from "../services/serviceExporter"
 
 const initialState = {
     allPosts : [],
     userPosts : [],
     singleUserPosts : [],
+    bookmarkedPosts : [],
 };
 
 export const getUserPostsData = createAsyncThunk("post/getUserPostsData", async(username, thunkAPI) => {
@@ -90,7 +91,40 @@ export const userDislikedPost = createAsyncThunk("post/userDislikedPost", async(
     }
 })
 
+export const addPostToBookmark = createAsyncThunk("post/addPostToBookmark", async(postId, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        const resp = await addBookmark(postId, authToken)
+        console.log(resp.data)
+        return resp.data.bookmarks
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
 
+export const getBookmarkedPostsData = createAsyncThunk("post/getBookmarkedPostsData", async(thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        const resp = await getBookmarkedPosts(authToken)
+        console.log(resp.data)
+        return resp.data.bookmarks
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const removeBookmarkedPostData = createAsyncThunk("post/removeBookmarkedPostData", async(postId,thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    console.log("hello")
+    try{
+        console.log(postId)
+        const resp = await removeBookmarkedPost(postId, authToken)
+        console.log(resp.data.bookmarks)
+        return resp.data.bookmarks
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+} )
 
 export const postSlice = createSlice({
     name : "post",
@@ -178,6 +212,36 @@ export const postSlice = createSlice({
             state.allPosts = action.payload
         },
         [userDislikedPost.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [addPostToBookmark.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [addPostToBookmark.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.bookmarkedPosts = action.payload
+        },
+        [addPostToBookmark.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [getBookmarkedPostsData.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [getBookmarkedPostsData.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.bookmarkedPosts = action.payload
+        },
+        [getBookmarkedPostsData.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [removeBookmarkedPostData.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [removeBookmarkedPostData.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.bookmarkedPosts = action.payload
+        },
+        [removeBookmarkedPostData.rejected] : (state) => {
             state.postStatus = "rejected"
         }
     }

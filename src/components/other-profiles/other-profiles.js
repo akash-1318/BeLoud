@@ -14,7 +14,7 @@ function OtherProfiles() {
   const dispatch = useDispatch();
   const { username } = useParams();
   const { user } = useSelector((store) => store.reduxStore);
-  const { allUserData } = useSelector((store) => store.user);
+  const { allUserData, allPosts } = useSelector((store) => store.user);
   const {loader} = useSelector((store) => store.additional)
   const [otherUser, setOtherUser] = useState({});
 
@@ -31,7 +31,7 @@ function OtherProfiles() {
     let otherUserinfo = allUserData.find((user) => user.username === username);
     setOtherUser(otherUserinfo);
     dispatch(getSingleUserPostsData(username))
-  }, [username, allUserData]);
+  }, [username, allUserData, allPosts]);
 
   let reversePostsData = [...singleUserPosts].reverse()
 

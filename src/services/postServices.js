@@ -57,4 +57,30 @@ axios.post(`/api/posts/dislike/${postId}`,
     headers:{
         authorization : authToken
     }
-})   
+})
+
+export const addBookmark = (postId, authToken) => 
+axios.post(`/api/users/bookmark/${postId}`,
+{},
+{
+    headers:{
+        authorization : authToken
+    }
+})
+
+export const getBookmarkedPosts = (authToken) => {
+    axios.get("/api/users/bookmark",{
+        headers : {
+            authorization : authToken
+        }
+    })
+}
+
+export const removeBookmarkedPost = (postId, authToken) =>
+    axios.post(`/api/users/remove-bookmark/${postId}`,
+    {},
+    {
+        headers:{
+            authorization : authToken
+        }
+    })

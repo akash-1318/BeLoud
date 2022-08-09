@@ -1,14 +1,14 @@
 import "./post.css";
 import {useSelector, useDispatch} from "react-redux"
 import { useState } from "react";
-import {deleteUserPost, userDislikedPost, userLikedPost} from "../../features/postSlice"
+import {deleteUserPost, userDislikedPost, userLikedPost, addPostToBookmark, removeBookmarkedPostData} from "../../features/postSlice"
 import {handleModalState, setPostId} from "../../features/additionalSlice"
 
 function Post({post}) {
   const dispatch = useDispatch()
   const {user} = useSelector((store) => store.reduxStore)
   const {allUserData} = useSelector((store) => store.user)
-  const {allPosts} = useSelector((store) => store.post)
+  const {allPosts, bookmarkedPosts} = useSelector((store) => store.post)
   const {content, createdAt, username,pic, _id,likes } = post
   const [openMenu, setOpenMenu] = useState(false)
 
@@ -24,6 +24,8 @@ function Post({post}) {
   let userInfo = allUserData.find((userData) => userData.username === post.username)
 
   let likedUser = likes.likedBy.some((likedUser) => likedUser.username === user.username)
+
+  let isBookmarked = bookmarkedPosts?.some((post) => post._id === _id)
 
   return (
     <div className="post__container">
@@ -70,6 +72,7 @@ function Post({post}) {
             if(likedUser){
               dispatch(userDislikedPost(_id))
             } else{
+              console.log(post.username)
               dispatch(userLikedPost(_id))
             }
           }}>
@@ -79,8 +82,16 @@ function Post({post}) {
           <div className="post__footer-icon">
           <i class='bx bx-message-rounded'></i>
           </div>
-          <div className="post__footer-icon bookmark">
-          <i class='bx bxs-bookmarks'></i>
+          <div className={`post__footer-icon bookmark ${isBookmarked ? "bookmarked" : ""}`}
+          onClick={() => {
+            if(isBookmarked){
+              dispatch(removeBookmarkedPostData(_id))
+            }else{
+              dispatch(addPostToBookmark(_id))
+            }
+          }}
+          >
+            {isBookmarked ? (<i class='bx bxs-bookmarks' ></i>) : (<i class='bx bx-bookmarks'></i>)}
           </div>
       </div>
     </div>

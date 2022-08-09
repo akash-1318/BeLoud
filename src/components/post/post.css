@@ -121,3 +121,7 @@
 .post__footer-icon.not__liked:hover{
     color: var(--tomato-color);    
 }
+
+.post__footer-icon.bookmarked{
+    color: var(--secondry-color);
+}

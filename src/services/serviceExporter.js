@@ -9,4 +9,7 @@ export {
   editPost,
   likePost,
   dislikePost,
+  addBookmark,
+  getBookmarkedPosts,
+  removeBookmarkedPost,
 } from "./postServices";
