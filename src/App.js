@@ -1,7 +1,7 @@
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {LandingPage, Home, Login, Signup, Profile, AnyProfile, Bookmark} from "./pages/index"
+import {LandingPage, Home, Login, Signup, Profile, AnyProfile, Bookmark, Comments} from "./pages/index"
 import {Route, Routes} from "react-router-dom"
 import {RequireAuth} from "./utils/requireAuth"
 import MockMan from "mockman-js";
@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     dispatch(getUsersData())
     dispatch(getAllPostsData())
-  },[authToken, allPosts])
+  },[authToken])
 
   return (
     <div className="App">
@@ -40,6 +40,11 @@ function App() {
         <Route path="/profile/:username" element={
           <RequireAuth>
             <AnyProfile/>
+          </RequireAuth>
+        }></Route>
+        <Route path="/post/:postId" element={
+          <RequireAuth>
+            <Comments/>
           </RequireAuth>
         }></Route>
         <Route path="/bookmark" element={

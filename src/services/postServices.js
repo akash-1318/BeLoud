@@ -28,59 +28,80 @@ export const deletePost = (postId, authToken) =>
     },
   });
 
-
-export const editPost = ({uploadPost, postIdToUpdate}, authToken) => 
-    axios.post(`/api/posts/edit/${postIdToUpdate}`,
+export const editPost = ({ uploadPost, postIdToUpdate }, authToken) =>
+  axios.post(
+    `/api/posts/edit/${postIdToUpdate}`,
     {
-        postData : uploadPost
+      postData: uploadPost,
     },
     {
-        headers:{
-            authorization : authToken
-        }
-    })
-
-
-export const likePost = (postId, authToken) => 
-axios.post(`/api/posts/like/${postId}`,
-{},
-{
-    headers:{
-        authorization : authToken
+      headers: {
+        authorization: authToken,
+      },
     }
-})   
+  );
 
-export const dislikePost = (postId, authToken) => 
-axios.post(`/api/posts/dislike/${postId}`,
-{},
-{
-    headers:{
-        authorization : authToken
-    }
-})
-
-export const addBookmark = (postId, authToken) => 
-axios.post(`/api/users/bookmark/${postId}`,
-{},
-{
-    headers:{
-        authorization : authToken
-    }
-})
-
-export const getBookmarkedPosts = (authToken) => {
-    axios.get("/api/users/bookmark",{
-        headers : {
-            authorization : authToken
-        }
-    })
-}
-
-export const removeBookmarkedPost = (postId, authToken) =>
-    axios.post(`/api/users/remove-bookmark/${postId}`,
+export const likePost = (postId, authToken) =>
+  axios.post(
+    `/api/posts/like/${postId}`,
     {},
     {
-        headers:{
-            authorization : authToken
-        }
-    })
+      headers: {
+        authorization: authToken,
+      },
+    }
+  );
+
+export const dislikePost = (postId, authToken) =>
+  axios.post(
+    `/api/posts/dislike/${postId}`,
+    {},
+    {
+      headers: {
+        authorization: authToken,
+      },
+    }
+  );
+
+export const addBookmark = (postId, authToken) =>
+  axios.post(
+    `/api/users/bookmark/${postId}`,
+    {},
+    {
+      headers: {
+        authorization: authToken,
+      },
+    }
+  );
+
+export const getBookmarkedPosts = (authToken) => {
+  axios.get("/api/users/bookmark", {
+    headers: {
+      authorization: authToken,
+    },
+  });
+};
+
+export const removeBookmarkedPost = (postId, authToken) =>
+  axios.post(
+    `/api/users/remove-bookmark/${postId}`,
+    {},
+    {
+      headers: {
+        authorization: authToken,
+      },
+    }
+  );
+
+export const addComment = (commentData, postId, authToken) =>
+  axios.post(
+    `/api/comments/add/${postId}`,
+    {
+      commentData,
+    },
+    {
+      headers: {
+        authorization: authToken,
+      },
+    }
+  );

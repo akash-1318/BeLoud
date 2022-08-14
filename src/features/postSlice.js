@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost, likePost, dislikePost, addBookmark, getBookmarkedPosts, removeBookmarkedPost} from "../services/serviceExporter"
+import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost, likePost, dislikePost, addBookmark, getBookmarkedPosts, removeBookmarkedPost, addComment} from "../services/serviceExporter"
 
 const initialState = {
     allPosts : [],
@@ -124,7 +124,18 @@ export const removeBookmarkedPostData = createAsyncThunk("post/removeBookmarkedP
     } catch(error){
         thunkAPI.rejectWithValue(error)
     }
-} )
+})
+
+export const addCommentOnPost = createAsyncThunk("post/addCommentOnPost", async({commentData, postId}, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        console.log(commentData, postId)
+        const resp = await addComment(commentData, postId, authToken)
+        console.log(resp)
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
 
 export const postSlice = createSlice({
     name : "post",

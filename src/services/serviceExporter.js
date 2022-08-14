@@ -12,4 +12,5 @@ export {
   addBookmark,
   getBookmarkedPosts,
   removeBookmarkedPost,
+  addComment,
 } from "./postServices";
