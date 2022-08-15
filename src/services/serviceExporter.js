@@ -7,4 +7,12 @@ export {
   addPost,
   deletePost,
   editPost,
+  likePost,
+  dislikePost,
+  addBookmark,
+  getBookmarkedPosts,
+  removeBookmarkedPost,
+  addComment,
+  getComments,
+  deleteComment,
 } from "./postServices";

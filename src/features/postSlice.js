@@ -1,10 +1,12 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost} from "../services/serviceExporter"
+import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost, likePost, dislikePost, addBookmark, getBookmarkedPosts, removeBookmarkedPost, addComment, getComments, deleteComment} from "../services/serviceExporter"
 
 const initialState = {
     allPosts : [],
     userPosts : [],
     singleUserPosts : [],
+    bookmarkedPosts : [],
+    postComments : [],
 };
 
 export const getUserPostsData = createAsyncThunk("post/getUserPostsData", async(username, thunkAPI) => {
@@ -65,6 +67,101 @@ export const editUserPost = createAsyncThunk("post/editUserPost", async({uploadP
         return thunkAPI.rejectWithValue(error)
     }
 })
+
+export const userLikedPost = createAsyncThunk("post/userLikedPost", async(postId, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        console.log(postId)
+        const resp = await likePost(postId, authToken)
+        console.log(resp.data.posts)
+        return resp.data.posts
+    } catch(error){
+        return thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const userDislikedPost = createAsyncThunk("post/userDislikedPost", async(postId, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        console.log(postId)
+        const resp = await dislikePost(postId, authToken)
+        console.log(resp.data.posts)
+        return resp.data.posts
+    } catch(error){
+        return thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const addPostToBookmark = createAsyncThunk("post/addPostToBookmark", async(postId, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        const resp = await addBookmark(postId, authToken)
+        console.log(resp.data)
+        return resp.data.bookmarks
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const getBookmarkedPostsData = createAsyncThunk("post/getBookmarkedPostsData", async(thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        const resp = await getBookmarkedPosts(authToken)
+        console.log(resp.data)
+        return resp.data.bookmarks
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const removeBookmarkedPostData = createAsyncThunk("post/removeBookmarkedPostData", async(postId,thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    console.log("hello")
+    try{
+        console.log(postId)
+        const resp = await removeBookmarkedPost(postId, authToken)
+        console.log(resp.data.bookmarks)
+        return resp.data.bookmarks
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const addCommentOnPost = createAsyncThunk("post/addCommentOnPost", async({commentData, postId}, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        console.log(commentData, postId)
+        const resp = await addComment(commentData, postId, authToken)
+        console.log(resp.data.posts)
+        return resp.data.posts
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const getCommentsData = createAsyncThunk("post/getCommentsData", async(postId, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    console.log(postId)
+    try{
+        const resp = await getComments(postId, authToken)
+        console.log(resp.data.comments)
+        return resp.data.comments
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const deleteCommentData = createAsyncThunk("post/deleteCommentData", async({postId, commentId}, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        const resp = await deleteComment(postId, commentId, authToken)
+        console.log(resp.data.comments)
+        return resp.data.comments
+    }catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
 
 export const postSlice = createSlice({
     name : "post",
@@ -133,7 +230,87 @@ export const postSlice = createSlice({
         },
         [editUserPost.rejected] : (state) => {
             state.postStatus = "rejected"
-        }
+        },
+        [userLikedPost.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [userLikedPost.fulfilled] : (state,action) => {
+            state.postStatus = "fulfilled"
+            state.allPosts = action.payload
+        },
+        [userLikedPost.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [userDislikedPost.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [userDislikedPost.fulfilled] : (state,action) => {
+            state.postStatus = "fulfilled"
+            state.allPosts = action.payload
+        },
+        [userDislikedPost.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [addPostToBookmark.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [addPostToBookmark.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.bookmarkedPosts = action.payload
+        },
+        [addPostToBookmark.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [getBookmarkedPostsData.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [getBookmarkedPostsData.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.bookmarkedPosts = action.payload
+        },
+        [getBookmarkedPostsData.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [removeBookmarkedPostData.pending] : (state) => {
+            state.postStatus = "pending"
+        },
+        [removeBookmarkedPostData.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.bookmarkedPosts = action.payload
+        },
+        [removeBookmarkedPostData.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [addCommentOnPost.pending] : (state) => {
+            state.postStatus = "pendning"
+        },
+        [addCommentOnPost.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.allPosts = action.payload
+        },
+        [addCommentOnPost.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [getCommentsData.pending] : (state) => {
+            state.postStatus = "pendning"
+        },
+        [getCommentsData.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.postComments = action.payload
+        },
+        [getCommentsData.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [deleteCommentData.pending] : (state) => {
+            state.postStatus = "pendning"
+        },
+        [deleteCommentData.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.postComments = action.payload
+        },
+        [deleteCommentData.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
     }
 })
 

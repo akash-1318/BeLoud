@@ -20,7 +20,7 @@ function Home() {
     dispatch(getAllPostsData())
   },[authToken])
 
-  let reversePostsData = [...allPosts].reverse()
+  let reversePostsData = [...allPosts]?.reverse()
 
   return (
     <div className="main__conatiner">

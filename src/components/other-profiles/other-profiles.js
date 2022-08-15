@@ -6,11 +6,11 @@ import { useState } from "react";
 import Loader from "react-js-loader";
 import {Post} from ".././compIndex"
 import {openLoader, closeLoader} from "../../features/additionalSlice"
-import {getSingleUserPostsData} from "../../features/postSlice"
+import {getSingleUserPostsData, getAllPostsData} from "../../features/postSlice"
 import noPost from "../../assets/images/zero-post.jpg"
 
 function OtherProfiles() {
-  const {singleUserPosts} = useSelector((store) => store.post)
+  const {singleUserPosts, allPosts} = useSelector((store) => store.post)
   const dispatch = useDispatch();
   const { username } = useParams();
   const { user } = useSelector((store) => store.reduxStore);
@@ -31,7 +31,7 @@ function OtherProfiles() {
     let otherUserinfo = allUserData.find((user) => user.username === username);
     setOtherUser(otherUserinfo);
     dispatch(getSingleUserPostsData(username))
-  }, [username, allUserData]);
+  }, [username, allUserData, allPosts]);
 
   let reversePostsData = [...singleUserPosts].reverse()
 

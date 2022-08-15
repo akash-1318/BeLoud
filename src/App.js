@@ -1,7 +1,7 @@
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {LandingPage, Home, Login, Signup, Profile, AnyProfile} from "./pages/index"
+import {LandingPage, Home, Login, Signup, Profile, AnyProfile, Bookmark, Comments} from "./pages/index"
 import {Route, Routes} from "react-router-dom"
 import {RequireAuth} from "./utils/requireAuth"
 import MockMan from "mockman-js";
@@ -13,6 +13,7 @@ import {getAllPostsData} from "./features/postSlice"
 
 function App() {
   const {authToken, user} = useSelector((store) => store.reduxStore)
+  const {allPosts} = useSelector((store) => store.post)
   const {modalState} = useSelector((store) => store.additional)
   const dispatch = useDispatch();
 
@@ -39,6 +40,16 @@ function App() {
         <Route path="/profile/:username" element={
           <RequireAuth>
             <AnyProfile/>
+          </RequireAuth>
+        }></Route>
+        <Route path="/post/:postId" element={
+          <RequireAuth>
+            <Comments/>
+          </RequireAuth>
+        }></Route>
+        <Route path="/bookmark" element={
+          <RequireAuth>
+            <Bookmark/>
           </RequireAuth>
         }></Route>
         <Route path="/login" element={<Login/>}></Route>
