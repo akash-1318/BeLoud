@@ -13,4 +13,6 @@ export {
   getBookmarkedPosts,
   removeBookmarkedPost,
   addComment,
+  getComments,
+  deleteComment,
 } from "./postServices";

@@ -28,6 +28,10 @@ function Bookmark() {
     bookmarkedPosts?.some((bookPost) => post._id === bookPost._id)
   );
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="main__conatiner">
       <section className="left__section">

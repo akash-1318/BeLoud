@@ -1,11 +1,12 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost, likePost, dislikePost, addBookmark, getBookmarkedPosts, removeBookmarkedPost, addComment} from "../services/serviceExporter"
+import {getUserPosts, getAllPosts, getSingleUserPosts, addPost, deletePost, editPost, likePost, dislikePost, addBookmark, getBookmarkedPosts, removeBookmarkedPost, addComment, getComments, deleteComment} from "../services/serviceExporter"
 
 const initialState = {
     allPosts : [],
     userPosts : [],
     singleUserPosts : [],
     bookmarkedPosts : [],
+    postComments : [],
 };
 
 export const getUserPostsData = createAsyncThunk("post/getUserPostsData", async(username, thunkAPI) => {
@@ -131,11 +132,36 @@ export const addCommentOnPost = createAsyncThunk("post/addCommentOnPost", async(
     try{
         console.log(commentData, postId)
         const resp = await addComment(commentData, postId, authToken)
-        console.log(resp)
+        console.log(resp.data.posts)
+        return resp.data.posts
     } catch(error){
         thunkAPI.rejectWithValue(error)
     }
 })
+
+export const getCommentsData = createAsyncThunk("post/getCommentsData", async(postId, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    console.log(postId)
+    try{
+        const resp = await getComments(postId, authToken)
+        console.log(resp.data.comments)
+        return resp.data.comments
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const deleteCommentData = createAsyncThunk("post/deleteCommentData", async({postId, commentId}, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    try{
+        const resp = await deleteComment(postId, commentId, authToken)
+        console.log(resp.data.comments)
+        return resp.data.comments
+    }catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
 
 export const postSlice = createSlice({
     name : "post",
@@ -254,7 +280,37 @@ export const postSlice = createSlice({
         },
         [removeBookmarkedPostData.rejected] : (state) => {
             state.postStatus = "rejected"
-        }
+        },
+        [addCommentOnPost.pending] : (state) => {
+            state.postStatus = "pendning"
+        },
+        [addCommentOnPost.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.allPosts = action.payload
+        },
+        [addCommentOnPost.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [getCommentsData.pending] : (state) => {
+            state.postStatus = "pendning"
+        },
+        [getCommentsData.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.postComments = action.payload
+        },
+        [getCommentsData.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
+        [deleteCommentData.pending] : (state) => {
+            state.postStatus = "pendning"
+        },
+        [deleteCommentData.fulfilled] : (state, action) => {
+            state.postStatus = "fulfilled"
+            state.postComments = action.payload
+        },
+        [deleteCommentData.rejected] : (state) => {
+            state.postStatus = "rejected"
+        },
     }
 })
 

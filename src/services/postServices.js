@@ -105,3 +105,24 @@ export const addComment = (commentData, postId, authToken) =>
       },
     }
   );
+
+export const getComments = (postId, authToken) =>   
+axios.get(
+  `/api/comments/${postId}`,
+  {},
+  {
+    headers: {
+      authorization: authToken,
+    },
+  }
+)
+
+export const deleteComment = (postId, commentId, authToken) =>
+axios.delete(
+  `/api/comments/delete/${postId}/${commentId}`,
+  {
+    headers: {
+      authorization: authToken,
+    },
+  }
+)

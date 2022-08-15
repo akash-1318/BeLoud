@@ -6,8 +6,14 @@ import {
   UserProfile,
   OtherProfiles
 } from "../../components/compIndex";
+import {useEffect} from "react"
 
 function AnyProfile() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="main__conatiner">
       <section className="left__section">

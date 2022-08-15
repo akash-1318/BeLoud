@@ -16,7 +16,6 @@ function UserProfile() {
 
   useEffect(() => {
     dispatch(openLoader());
-    console.log(loader);
     setTimeout(() => {
       dispatch(closeLoader());
     }, 500);
@@ -29,8 +28,15 @@ function UserProfile() {
 
   let reversePostsData = [...singleUserPosts].reverse()
 
+  console.log(loader)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
+    {/* {loader ? (<h1>Hello</h1>) : (<h1>Bello</h1>)} */}
       {loader ? (
         <>
           <Loader type="spinner-default" bgColor={"#8292fd"} size={80} />

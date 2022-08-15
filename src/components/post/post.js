@@ -7,9 +7,11 @@ import {
   userLikedPost,
   addPostToBookmark,
   removeBookmarkedPostData,
-  addCommentOnPost
+  addCommentOnPost,
+  getCommentsData,
+  deleteCommentData,
 } from "../../features/postSlice";
-import { handleModalState, setPostId } from "../../features/additionalSlice";
+import { handleModalState, setPostId} from "../../features/additionalSlice";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
@@ -19,10 +21,11 @@ function Post({ post }) {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.reduxStore);
   const { allUserData } = useSelector((store) => store.user);
-  const { allPosts, bookmarkedPosts } = useSelector((store) => store.post);
-  const { content, createdAt, username, pic, _id, likes } = post;
+  const { allPosts, bookmarkedPosts, postComments } = useSelector((store) => store.post);
+  const {loader} = useSelector((store) => store.additional)
+  const { content, createdAt, username, pic, _id, likes, comments } = post;
   const [openMenu, setOpenMenu] = useState(false);
-  const [comment, setComment] = useState("")
+  const [comment, setComment] = useState("");
 
   const date = new Date(createdAt);
   const [month, day, year, hour, minutes] = [
@@ -42,6 +45,12 @@ function Post({ post }) {
   );
 
   let isBookmarked = bookmarkedPosts?.some((post) => post._id === _id);
+
+  useEffect(() => {
+    if (location.pathname.includes("/post") === true) {
+      dispatch(getCommentsData(_id));
+    }
+  }, [allPosts, _id]);
 
   return (
     <div className="post__container">
@@ -146,18 +155,66 @@ function Post({ post }) {
               <div className="new__post-left">
                 <img src={user?.profilePic} />
               </div>
-              <input type="text" placeholder="Reply here..." onChange={(e) => setComment(e.target.value.trim())}/>
-              <button className="follow__btn comment" onClick={() => dispatch(addCommentOnPost({commentData : comment, postId : post._id}))}>Post</button>
+              <input
+                type="text"
+                placeholder="Reply here..."
+                onChange={(e) => setComment(e.target.value)}
+                value={comment}
+              />
+              <button
+                className="follow__btn comment"
+                onClick={() => {
+                  if (comment !== "") {
+                    dispatch(
+                      addCommentOnPost({
+                        commentData: comment,
+                        postId: post._id,
+                      })
+                    );
+                  }
+                  setComment("");
+                }}
+              >
+                Post
+              </button>
             </div>
-            <div className="user__comments">
-              <div className="new__post-left comment">
-                <img src=""/>
-              </div>
-              <div className="user__comment-right">
-              <p className="user__comments-name">Akash</p>
-              <p className="comment__text">gfcjhgvjhgvjhgvhfgcjgfchfgchgfdhgfcgresgfcjhgvjtftyrdchghtf</p>
-              </div>
-            </div>
+            {postComments?.length > 0 ? (
+              <>
+              {postComments?.map((comment) => {
+                return (
+                  <div className="user__comments">
+                    <div className="new__post-left comment">
+                      <img
+                        src={
+                          allUserData.find(
+                            (user) => user.username === comment.username
+                          ).profilePic
+                        }
+                      />
+                    </div>
+                    <div className="user__comment-right">
+                      <p className="user__comments-name">
+                        {
+                          allUserData.find(
+                            (user) => user.username === comment.username
+                          ).firstName
+                        }
+                      </p>
+                      <p className="comment__text">{comment.text}</p>
+                    </div>
+                    {allUserData.find(
+                      (user) => user.username === comment.username
+                    ).firstName === user.firstName ||
+                    user.username === username ? (
+                      <div className="delete__comment" onClick={() => dispatch(deleteCommentData({postId : _id, commentId : comment._id}))}>
+                        <i class="bx bx-trash-alt"></i>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+              </>
+            ) : null}
           </div>
         </>
       ) : null}
