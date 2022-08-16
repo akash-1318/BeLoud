@@ -20,11 +20,9 @@ function OtherProfiles() {
 
   useEffect(() => {
       dispatch(openLoader())
-      console.log(loader)
       setTimeout(() => {
           dispatch(closeLoader())
       },500)
-      console.log(loader)
   },[username])
 
   useEffect(() => {
@@ -64,7 +62,7 @@ function OtherProfiles() {
                 <p>Following</p>
               </div>
               <div className="profile__detail-col">
-                <p>0</p>
+                <p>{reversePostsData.length}</p>
                 <p>Posts</p>
               </div>
               <div className="profile__detail-col">

@@ -11,11 +11,9 @@ const additionalSlice = createSlice({
     initialState,
     reducers : {
         openLoader : (state) => {
-            console.log("lodader true")
             state.loader = true
         },
         closeLoader : (state) => {
-            console.log("lodader false")
             state.loader = false
         },
         handleModalState : (state) => {

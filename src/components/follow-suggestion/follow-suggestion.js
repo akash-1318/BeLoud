@@ -24,6 +24,8 @@ function FollowSuggestion() {
     console.log(user)
   }
 
+  console.log(allUserData)
+
   return (
     <>
       <div className="follow__conatiner">
