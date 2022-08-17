@@ -27,15 +27,6 @@ function Post({ post }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [comment, setComment] = useState("");
 
-  const date = new Date(createdAt);
-  const [month, day, year, hour, minutes] = [
-    date.getMonth(),
-    date.getDate(),
-    date.getFullYear(),
-    date.getHours(),
-    date.getMinutes(),
-  ];
-
   let userInfo = allUserData.find(
     (userData) => userData.username === post.username
   );
@@ -70,9 +61,7 @@ function Post({ post }) {
           <p className="post__name">
             {userInfo?.firstName} <span className="id"> {username} </span>{" "}
           </p>
-          <p className="post__date">{`${year}/${
-            +month + 1
-          }/${day}  ${hour}:${minutes}`}</p>
+          <p className="post__date">{new Date(createdAt).toDateString()}</p>
         </div>
         {user.username === userInfo?.username ? (
           <div className="post__menu" onClick={() => setOpenMenu(!openMenu)}>
