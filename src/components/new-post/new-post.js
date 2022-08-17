@@ -2,14 +2,17 @@ import "./new-post.css";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import CancelIcon from '@mui/icons-material/Cancel';
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Picker from "emoji-picker-react";
 import {addUserPost} from "../../features/postSlice"
 import { useEffect } from "react";
+import {handlePostModalState} from "../../features/additionalSlice"
 
 function NewPost() {
   const { user, authToken } = useSelector((store) => store.reduxStore);
+  const {postModalState} = useSelector((store) => store.additional);
   const [postFile, setPostFile] = useState(null);
   const [chosenEmoji, setChosenEmoji] = useState("");
   const [showEmojis, setSHowEmojis] = useState(false);

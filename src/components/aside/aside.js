@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {NavLink} from "react-router-dom"
 import {logout} from "../../features/authSlice"
 import logo from "../../assets/images/logo.png"
+import {handlePostModalState} from "../../features/additionalSlice"
 
 function Aside () {
     const dispatch = useDispatch(); 
@@ -41,7 +42,7 @@ function Aside () {
                 <i class='bx bx-log-out-circle mr-5'></i>
                     <p>Logout</p>
                 </div>
-                <div className="new__post">
+                <div className="new__post" onClick={() => dispatch(handlePostModalState())}>
                     <p>Add new post</p>
                 </div>
             </main>
