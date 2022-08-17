@@ -189,3 +189,8 @@
 .delete__comment:hover{
     color: var(--secondry-color);
 }
+
+.new__post-right.post{
+    width: auto;
+    cursor: pointer;
+}

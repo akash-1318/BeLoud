@@ -1,5 +1,5 @@
 export { signupService, signinService } from "./authServices";
-export { getUsers } from "./userServices";
+export { getUsers, followUser,unfollowUser, updateUser } from "./userServices";
 export {
   getUserPosts,
   getAllPosts,

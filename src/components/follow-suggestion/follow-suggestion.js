@@ -1,6 +1,6 @@
 import "./follow-suggestion.css";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsersData } from "../../features/userSlice";
+import { getUsersData, followUserData } from "../../features/userSlice";
 import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 
@@ -14,8 +14,8 @@ function FollowSuggestion() {
   useEffect(() => {
     setFollowSuggestion(
       allUserData
-        .filter((followUser) => followUser.username !== user.username)
-        .slice(0, 3)
+        .filter((followUser) => followUser.username !== user.username && !user.following.some((data) => data.username === followUser.username))
+        .slice(0, 4)
     );
   }, [user, allUserData]);
 
@@ -49,7 +49,7 @@ function FollowSuggestion() {
                   </p>
                   <p className="id">{user.username}</p>
                 </div>
-                <button className="follow__btn">
+                <button className="follow__btn" onClick={() => dispatch(followUserData({followUserId:user._id, dispatch : dispatch}))}>
                   {" "}
                   <i class="bx bx-plus"></i> follow
                 </button>

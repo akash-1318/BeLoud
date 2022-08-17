@@ -52,13 +52,18 @@ function Post({ post }) {
     }
   }, [allPosts, _id]);
 
+  const handleProfileClick = (username) => {
+    navigate(`/profile/${username}`)
+    console.log(user)
+  }
+
   return (
     <div className="post__container">
       <div className="inner__post-container">
-        <div className="new__post-left">
+        <div className="new__post-left" onClick={() => handleProfileClick(username)}>
           <img src={userInfo?.profilePic} />
         </div>
-        <div className="new__post-right">
+        <div className="new__post-right post" onClick={() => handleProfileClick(username)}>
           <p className="post__name">
             {userInfo?.firstName} <span className="id"> {username} </span>{" "}
           </p>

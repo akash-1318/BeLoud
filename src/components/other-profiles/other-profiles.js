@@ -8,6 +8,7 @@ import {Post} from ".././compIndex"
 import {openLoader, closeLoader} from "../../features/additionalSlice"
 import {getSingleUserPostsData, getAllPostsData} from "../../features/postSlice"
 import noPost from "../../assets/images/zero-post.jpg"
+import {followUserData, unfollowUserData} from "../../features/userSlice"
 
 function OtherProfiles() {
   const {singleUserPosts, allPosts} = useSelector((store) => store.post)
@@ -33,6 +34,8 @@ function OtherProfiles() {
 
   let reversePostsData = [...singleUserPosts].reverse()
 
+  console.log(user.following)
+
   return (
     <>
       {otherUser?.username ? (
@@ -51,7 +54,11 @@ function OtherProfiles() {
               {otherUser.firstName} {otherUser.lastName}
             </p>
             <p className="user__profile-id">{otherUser.username}</p>
-            <button className="user__profile-btn follow"> Follow</button>
+            {user.following.some((check) => check.username === otherUser.username) ? (
+              <button className="user__profile-btn follow" onClick={() => dispatch(unfollowUserData({followUserId:otherUser._id, dispatch : dispatch}))}> Unfollow</button>
+            ) : (
+              <button className="user__profile-btn follow" onClick={() => dispatch(followUserData({followUserId:otherUser._id, dispatch : dispatch}))}> Follow</button>
+            )}
             <p className="profile__bio">{otherUser.bio}</p>
             <a href={otherUser.link} target="_blank">
               <p className="user__link">{otherUser.link}</p>

@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     dispatch(getUsersData())
     dispatch(getAllPostsData())
-  },[authToken])
+  },[authToken, user])
 
   return (
     <div className="App">
