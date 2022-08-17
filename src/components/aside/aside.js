@@ -6,6 +6,12 @@ import logo from "../../assets/images/logo.png"
 
 function Aside () {
     const dispatch = useDispatch(); 
+
+    const getActiveStyle = ({ isActive }) => ({
+        color: isActive ? "var(--white-color)" : "",
+        backgroundColor : isActive ? "var(--secondry-light-color)" : null
+    });
+
     return(
         <aside className="aside">
             <div className="aside__header">
@@ -13,29 +19,21 @@ function Aside () {
                 <p>BeLoud</p>
             </div>
             <main className="aside__options">
-                <NavLink to="/home">
-                <div className="aside__option">
+                <NavLink to="/home" style={getActiveStyle} className="aside__option">
                 <i class='bx bxs-home mr-5'></i>
                     <p className="">Feed</p>
-                </div>
                 </NavLink>
-                <NavLink to="/explore">
-                <div className="aside__option">
+                <NavLink to="/explore" style={getActiveStyle} className="aside__option">
                 <i class='bx bxs-compass mr-5' ></i>
                     <p>Explore</p>
-                </div>
                 </NavLink>
-                <NavLink to="/bookmark">
-                <div className="aside__option">
+                <NavLink to="/bookmark" style={getActiveStyle} className="aside__option">
                 <i class='bx bxs-bookmarks mr-5' ></i>
                     <p>Bookmark</p>
-                </div>
                 </NavLink>
-                <NavLink to="/profile">
-                <div className="aside__option">
+                <NavLink to="/profile" style={getActiveStyle} className="aside__option">
                 <i class='bx bxs-user-circle mr-5' ></i>
                     <p>Profile</p>
-                </div>
                 </NavLink>
                 <div className="aside__option" onClick={()=>{
                     dispatch(logout())

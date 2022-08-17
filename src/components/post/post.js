@@ -53,8 +53,11 @@ function Post({ post }) {
   }, [allPosts, _id]);
 
   const handleProfileClick = (username) => {
-    navigate(`/profile/${username}`)
-    console.log(user)
+    if(username === user.username){
+      navigate("/profile")
+    } else{
+      navigate(`/profile/${username}`)
+    }
   }
 
   return (
