@@ -19,10 +19,12 @@ function Aside () {
                     <p className="">Feed</p>
                 </div>
                 </NavLink>
+                <NavLink to="/explore">
                 <div className="aside__option">
                 <i class='bx bxs-compass mr-5' ></i>
                     <p>Explore</p>
                 </div>
+                </NavLink>
                 <NavLink to="/bookmark">
                 <div className="aside__option">
                 <i class='bx bxs-bookmarks mr-5' ></i>

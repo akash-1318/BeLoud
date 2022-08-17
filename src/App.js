@@ -1,7 +1,7 @@
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {LandingPage, Home, Login, Signup, Profile, AnyProfile, Bookmark, Comments} from "./pages/index"
+import {LandingPage, Home, Login, Signup, Profile, AnyProfile, Bookmark, Comments, Explore} from "./pages/index"
 import {Route, Routes} from "react-router-dom"
 import {RequireAuth} from "./utils/requireAuth"
 import MockMan from "mockman-js";
@@ -50,6 +50,11 @@ function App() {
         <Route path="/bookmark" element={
           <RequireAuth>
             <Bookmark/>
+          </RequireAuth>
+        }></Route>
+        <Route path="/explore" element={
+          <RequireAuth>
+            <Explore/>
           </RequireAuth>
         }></Route>
         <Route path="/login" element={<Login/>}></Route>

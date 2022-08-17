@@ -5,22 +5,35 @@ import {
   NewPost,
   Post,
 } from "../../components/compIndex";
-import {useSelector, useDispatch} from "react-redux"
-import {getAllPostsData} from "../../features/postSlice"
-import { useEffect } from "react";
-import Loader from "react-js-loader"
+import { useSelector, useDispatch } from "react-redux";
+import { getAllPostsData, userDislikedPost } from "../../features/postSlice";
+import { useEffect, useState } from "react";
+import Loader from "react-js-loader";
 
 function Home() {
-  const {authToken} = useSelector((store) => store.reduxStore)
-  const {allPosts} = useSelector((store) => store.post);
-  const {loader} = useSelector((store) => store.additional);
+  const { authToken, user } = useSelector((store) => store.reduxStore);
+  const { allPosts } = useSelector((store) => store.post);
+  const { loader } = useSelector((store) => store.additional);
   const dispatch = useDispatch();
+  const [feedPost, setFeedPost] = useState([]);
 
   useEffect(() => {
-    dispatch(getAllPostsData())
-  },[authToken])
+    dispatch(getAllPostsData());
+  }, [authToken]);
 
-  let reversePostsData = [...allPosts]?.reverse()
+  useEffect(() => {
+    setFeedPost(
+      allPosts?.filter(
+        (post) =>
+          post.username === user.username ||
+          user?.following?.find((ind) => ind.username === post.username)
+      )
+    );
+  }, [allPosts]);
+
+  console.log(feedPost);
+
+  let reversePostsData = [...feedPost]?.reverse();
 
   return (
     <div className="main__conatiner">
@@ -45,16 +58,13 @@ function Home() {
         </div>
         {reversePostsData.length > 0 ? (
           <>
-          {reversePostsData.map((post) => {
-            return(
-              <Post
-              key={post._id}
-              post = {post}
-              /> 
-            )
-          })}
+            {reversePostsData.map((post) => {
+              return <Post key={post._id} post={post} />;
+            })}
           </>
-        ) : (<Loader type="spinner-default" bgColor={"#8292fd"} size={80} />)}
+        ) : (
+          <Loader type="spinner-default" bgColor={"#8292fd"} size={80} />
+        )}
       </section>
       <section className="right__section">
         <FollowSuggestion />
