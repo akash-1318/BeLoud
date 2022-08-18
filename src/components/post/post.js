@@ -77,7 +77,6 @@ function Post({ post }) {
                     dispatch(handleModalState());
                     setOpenMenu(!openMenu);
                     dispatch(setPostId(post._id));
-                    console.log(post._id);
                   }}
                 >
                   {" "}
@@ -105,7 +104,6 @@ function Post({ post }) {
             if (likedUser) {
               dispatch(userDislikedPost(_id));
             } else {
-              console.log(post.username);
               dispatch(userLikedPost(_id));
             }
           }}

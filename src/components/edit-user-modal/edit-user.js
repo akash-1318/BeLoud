@@ -31,8 +31,6 @@ function EditModal() {
     setEditDetails({...editDetails, profilePic : getPostImg})
   };
 
-  console.log(editDetails)
-
   return (
     <>
       <div className="modal__primary-container">

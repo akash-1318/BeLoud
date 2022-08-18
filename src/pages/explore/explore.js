@@ -18,6 +18,10 @@ function Explore() {
     dispatch(getAllPostsData())
   },[authToken])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   let reversePostsData = [...allPosts]?.reverse()
 
   return (

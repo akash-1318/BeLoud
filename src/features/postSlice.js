@@ -40,7 +40,6 @@ export const addUserPost = createAsyncThunk("post/addUserPost", async(uploadPost
     const authToken = localStorage.getItem("TOKEN");
     try{
         const resp = await addPost(uploadPost,authToken)
-        console.log(resp.data.posts)
         return resp.data
     } catch(error){
         return thunkAPI.rejectWithValue(error)
@@ -51,7 +50,6 @@ export const deleteUserPost = createAsyncThunk("post/deleteUserPost", async(post
     const authToken = localStorage.getItem("TOKEN");
     try{
         const resp = await deletePost(postId, authToken)
-        console.log(resp.data)
         return resp.data
     } catch(error){
         return thunkAPI.rejectWithValue(error)
@@ -71,9 +69,7 @@ export const editUserPost = createAsyncThunk("post/editUserPost", async({uploadP
 export const userLikedPost = createAsyncThunk("post/userLikedPost", async(postId, thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
     try{
-        console.log(postId)
         const resp = await likePost(postId, authToken)
-        console.log(resp.data.posts)
         return resp.data.posts
     } catch(error){
         return thunkAPI.rejectWithValue(error)
@@ -83,9 +79,7 @@ export const userLikedPost = createAsyncThunk("post/userLikedPost", async(postId
 export const userDislikedPost = createAsyncThunk("post/userDislikedPost", async(postId, thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
     try{
-        console.log(postId)
         const resp = await dislikePost(postId, authToken)
-        console.log(resp.data.posts)
         return resp.data.posts
     } catch(error){
         return thunkAPI.rejectWithValue(error)
@@ -96,7 +90,6 @@ export const addPostToBookmark = createAsyncThunk("post/addPostToBookmark", asyn
     const authToken = localStorage.getItem("TOKEN");
     try{
         const resp = await addBookmark(postId, authToken)
-        console.log(resp.data)
         return resp.data.bookmarks
     } catch(error){
         thunkAPI.rejectWithValue(error)
@@ -107,7 +100,6 @@ export const getBookmarkedPostsData = createAsyncThunk("post/getBookmarkedPostsD
     const authToken = localStorage.getItem("TOKEN");
     try{
         const resp = await getBookmarkedPosts(authToken)
-        console.log(resp.data)
         return resp.data.bookmarks
     } catch(error){
         thunkAPI.rejectWithValue(error)
@@ -116,11 +108,8 @@ export const getBookmarkedPostsData = createAsyncThunk("post/getBookmarkedPostsD
 
 export const removeBookmarkedPostData = createAsyncThunk("post/removeBookmarkedPostData", async(postId,thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
-    console.log("hello")
     try{
-        console.log(postId)
         const resp = await removeBookmarkedPost(postId, authToken)
-        console.log(resp.data.bookmarks)
         return resp.data.bookmarks
     } catch(error){
         thunkAPI.rejectWithValue(error)
@@ -130,9 +119,7 @@ export const removeBookmarkedPostData = createAsyncThunk("post/removeBookmarkedP
 export const addCommentOnPost = createAsyncThunk("post/addCommentOnPost", async({commentData, postId}, thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
     try{
-        console.log(commentData, postId)
         const resp = await addComment(commentData, postId, authToken)
-        console.log(resp.data.posts)
         return resp.data.posts
     } catch(error){
         thunkAPI.rejectWithValue(error)
@@ -141,10 +128,8 @@ export const addCommentOnPost = createAsyncThunk("post/addCommentOnPost", async(
 
 export const getCommentsData = createAsyncThunk("post/getCommentsData", async(postId, thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
-    console.log(postId)
     try{
         const resp = await getComments(postId, authToken)
-        console.log(resp.data.comments)
         return resp.data.comments
     } catch(error){
         thunkAPI.rejectWithValue(error)
@@ -155,7 +140,6 @@ export const deleteCommentData = createAsyncThunk("post/deleteCommentData", asyn
     const authToken = localStorage.getItem("TOKEN");
     try{
         const resp = await deleteComment(postId, commentId, authToken)
-        console.log(resp.data.comments)
         return resp.data.comments
     }catch(error){
         thunkAPI.rejectWithValue(error)

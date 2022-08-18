@@ -18,11 +18,9 @@ export const getUsersData = createAsyncThunk("user/getUsersData", async(thunkAPI
 
 export const followUserData = createAsyncThunk("user/followUserData", async({followUserId, dispatch}, thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
-    console.log(followUserId)
     try{
         const resp = await followUser(followUserId, authToken)
         dispatch(updateUserData(resp.data.user))
-        console.log(resp.data)
         return resp.data
     } catch(error){
         thunkAPI.rejectWithValue(error)
@@ -31,14 +29,11 @@ export const followUserData = createAsyncThunk("user/followUserData", async({fol
 
 export const unfollowUserData = createAsyncThunk("user/unfollowUserData", async({followUserId, dispatch}, thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
-    console.log(followUserId)
     try{
         const resp = await unfollowUser(followUserId, authToken)
-        console.log(resp.data)
         dispatch(updateUserData(resp.data.user))
         return resp.data
     } catch(error){
-        console.log(error)
         thunkAPI.rejectWithValue(error)
     }
 })

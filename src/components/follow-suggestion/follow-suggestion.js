@@ -29,10 +29,7 @@ function FollowSuggestion() {
 
   const handleProfileClick = (user) => {
     navigate(`/otherprofiles/${user.username}`);
-    console.log(user);
   };
-
-  console.log(allUserData)
 
   useEffect(() => {
     setSuggestionList(

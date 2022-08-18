@@ -34,8 +34,6 @@ function OtherProfiles() {
 
   let reversePostsData = [...singleUserPosts].reverse()
 
-  console.log(user.following)
-
   return (
     <>
       {otherUser?.username ? (

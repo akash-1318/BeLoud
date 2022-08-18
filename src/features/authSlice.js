@@ -30,7 +30,6 @@ export const signinAuth = createAsyncThunk("auth/signinAuth", async({username, p
 
 export const updateUserData = createAsyncThunk("auth/updateUserData", async(userData, thunkAPI) => {
     const authToken = localStorage.getItem("TOKEN");
-    console.log(userData)
     try{
         const resp = await updateUser(userData, authToken)
         console.log(resp.data.user)

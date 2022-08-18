@@ -32,8 +32,6 @@ function Home() {
     );
   }, [allPosts]);
 
-  console.log(feedPost);
-
   let reversePostsData = [...feedPost]?.reverse();
 
   return (

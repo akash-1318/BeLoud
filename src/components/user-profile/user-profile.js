@@ -31,8 +31,6 @@ function UserProfile() {
     window.scrollTo(0, 0)
   }, [])
 
-  console.log(user)
-
   return (
     <>
       {loader ? (
