@@ -73,7 +73,7 @@ function EditPostModal() {
           ></textarea>
           {postFile ? (
             <>
-              <div className="file__container">
+              <div className="file__container edit__post">
                 <img src={postFile} />
                 <div className="cancel__btn" onClick={() => setPostFile(null)}>
                   <i class="bx bx-x"></i>

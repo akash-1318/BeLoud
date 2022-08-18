@@ -63,7 +63,7 @@ function PostModal() {
     <>
       <div className="modal__primary-container">
         <div className="post__modal edit__post-modal">
-          <div className="new__post-container">
+          <div className="new__post-container post__modal">
             <div className="new__post-left">
               <img src={user.profilePic} />
             </div>
@@ -79,7 +79,7 @@ function PostModal() {
               ></textarea>
               {postFile ? (
                 <>
-                  <div className="file__container">
+                  <div className="file__container post__modal">
                     <img src={postFile} />
                     <div
                       className="cancel__btn"

@@ -13,6 +13,7 @@
     left: 50%;
     transform:translate(-50%, -50%);
     width: 60rem;
+    max-height: 95vh;
 }
 
 .post__btn.edit__modal-btn{
@@ -21,4 +22,12 @@
 
 .emoji__container.update-post{
     bottom: 5rem;
+}
+
+.file__container.edit__post{
+    max-height: 76%;
+}
+
+.file__container.edit__post > img{
+    height: 70vh;
 }

@@ -5,3 +5,15 @@
     transform: translate(-50%, -50%);
     width: 65rem;
 }
+
+.new__post-container.post__modal{
+    max-height: 95vh;
+}
+
+.file__container.post__modal {
+    max-height: 76%;
+}
+
+.file__container.post__modal > img{
+    height: 70vh;
+}
