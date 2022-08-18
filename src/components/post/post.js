@@ -47,7 +47,7 @@ function Post({ post }) {
     if(username === user.username){
       navigate("/profile")
     } else{
-      navigate(`/profile/${username}`)
+      navigate(`/otherprofiles/${username}`)
     }
   }
 
