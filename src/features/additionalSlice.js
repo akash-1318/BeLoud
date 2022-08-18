@@ -3,6 +3,8 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 const initialState = {
     loader : false,
     modalState : false,
+    postModalState : false,
+    editModal : false,
     postIdToUpdate : null,
 }
 
@@ -11,15 +13,19 @@ const additionalSlice = createSlice({
     initialState,
     reducers : {
         openLoader : (state) => {
-            console.log("lodader true")
             state.loader = true
         },
         closeLoader : (state) => {
-            console.log("lodader false")
             state.loader = false
         },
         handleModalState : (state) => {
             state.modalState = !state.modalState
+        },
+        handlePostModalState : (state) => {
+            state.postModalState = !state.postModalState
+        },
+        handleEditModalState : (state) => {
+            state.editModal = !state.editModal
         },
         setPostId : (state, action) => {
             state.postIdToUpdate = action.payload
@@ -27,6 +33,6 @@ const additionalSlice = createSlice({
     },
 })
 
-export const {openLoader, closeLoader, handleModalState, setPostId} = additionalSlice.actions
+export const {openLoader, closeLoader, handleModalState, handlePostModalState, setPostId, handleEditModalState} = additionalSlice.actions
 
 export default additionalSlice.reducer

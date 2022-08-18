@@ -1,5 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUsers} from "../services/userServices"
+import {getUsers, followUser, unfollowUser, editUser} from "../services/userServices"
+import {updateUserData} from "./authSlice"
 
 const initialState = {
     allUserData : [],
@@ -12,6 +13,33 @@ export const getUsersData = createAsyncThunk("user/getUsersData", async(thunkAPI
         return usersResp.data
     }catch(error){
         return thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const followUserData = createAsyncThunk("user/followUserData", async({followUserId, dispatch}, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    console.log(followUserId)
+    try{
+        const resp = await followUser(followUserId, authToken)
+        dispatch(updateUserData(resp.data.user))
+        console.log(resp.data)
+        return resp.data
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const unfollowUserData = createAsyncThunk("user/unfollowUserData", async({followUserId, dispatch}, thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    console.log(followUserId)
+    try{
+        const resp = await unfollowUser(followUserId, authToken)
+        console.log(resp.data)
+        dispatch(updateUserData(resp.data.user))
+        return resp.data
+    } catch(error){
+        console.log(error)
+        thunkAPI.rejectWithValue(error)
     }
 })
 
@@ -29,7 +57,7 @@ export const userSlice = createSlice({
         },
         [getUsersData.rejected] : (state) => {
             state.userStatus = "rejected"
-        }
+        },
     }
 })
 

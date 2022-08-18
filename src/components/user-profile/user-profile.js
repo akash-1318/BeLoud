@@ -5,7 +5,7 @@ import defaultProfile from "../../assets/images/profile.svg";
 import { Post } from "../../components/post/post";
 import { getSingleUserPostsData } from "../../features/postSlice";
 import noPost from "../../assets/images/zero-post.jpg";
-import { openLoader, closeLoader } from "../../features/additionalSlice";
+import { openLoader, closeLoader, handleEditModalState } from "../../features/additionalSlice";
 import Loader from "react-js-loader";
 
 function UserProfile() {
@@ -19,7 +19,6 @@ function UserProfile() {
     setTimeout(() => {
       dispatch(closeLoader());
     }, 500);
-    console.log(loader);
   }, [user.username]);
 
   useEffect(() => {
@@ -28,15 +27,14 @@ function UserProfile() {
 
   let reversePostsData = [...singleUserPosts].reverse()
 
-  console.log(loader)
-
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
+  console.log(user)
+
   return (
     <>
-    {/* {loader ? (<h1>Hello</h1>) : (<h1>Bello</h1>)} */}
       {loader ? (
         <>
           <Loader type="spinner-default" bgColor={"#8292fd"} size={80} />
@@ -51,7 +49,7 @@ function UserProfile() {
               {user.firstName} {user.lastName}
             </p>
             <p className="user__profile-id">{user.username}</p>
-            <button className="user__profile-btn">Edit Profile</button>
+            <button className="user__profile-btn" onClick={() => dispatch(handleEditModalState())}>Edit Profile</button>
             <p className="profile__bio">{user.bio}</p>
             <a href={user.link} target="_blank">
               <p className="user__link">{user.link}</p>
@@ -62,7 +60,7 @@ function UserProfile() {
                 <p>Following</p>
               </div>
               <div className="profile__detail-col">
-                <p>0</p>
+                <p>{reversePostsData.length}</p>
                 <p>Posts</p>
               </div>
               <div className="profile__detail-col">

@@ -1,26 +1,26 @@
 import "./App.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {LandingPage, Home, Login, Signup, Profile, AnyProfile, Bookmark, Comments} from "./pages/index"
+import {LandingPage, Home, Login, Signup, Profile, AnyProfile, Bookmark, Comments, Explore} from "./pages/index"
 import {Route, Routes} from "react-router-dom"
 import {RequireAuth} from "./utils/requireAuth"
 import MockMan from "mockman-js";
 import {getUsersData} from "./features/userSlice"
 import { useEffect } from "react";
 import {useSelector, useDispatch} from "react-redux"
-import {EditPostModal} from "./components/compIndex"
+import {EditPostModal, PostModal, EditModal} from "./components/compIndex"
 import {getAllPostsData} from "./features/postSlice"
 
 function App() {
   const {authToken, user} = useSelector((store) => store.reduxStore)
   const {allPosts} = useSelector((store) => store.post)
-  const {modalState} = useSelector((store) => store.additional)
+  const {modalState, postModalState, editModal} = useSelector((store) => store.additional)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUsersData())
     dispatch(getAllPostsData())
-  },[authToken])
+  },[authToken, user])
 
   return (
     <div className="App">
@@ -52,11 +52,18 @@ function App() {
             <Bookmark/>
           </RequireAuth>
         }></Route>
+        <Route path="/explore" element={
+          <RequireAuth>
+            <Explore/>
+          </RequireAuth>
+        }></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/mock" element={<MockMan />}></Route>
       </Routes>
       {modalState ? (<EditPostModal/>) : null}
+      {postModalState ? (<PostModal/>) : null}
+      {editModal ? (<EditModal/>) : null}
     </div>
   );
 }

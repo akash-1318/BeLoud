@@ -42,12 +42,16 @@
     cursor: pointer;
 }
 
-.trending:hover, .latest:hover {
-    color: var(--primary-color);
-    /* background-color: var(--primary-color); */
-    border-top: 2px solid var(--primary-color);
+.set__trending.trending{
     border-bottom: none;
-    transition: .1s ease-in;
+    border-top: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.set__latest.latest{
+    border-bottom: none;
+    border-top: 2px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
 .trending > p, .latest > p{
@@ -55,4 +59,9 @@
     justify-content: center;
     align-items: center;
     grid-gap: .5rem;
+}
+
+.space {
+    height: 7rem;
+    width: 100%;
 }

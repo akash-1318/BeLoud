@@ -27,15 +27,6 @@ function Post({ post }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [comment, setComment] = useState("");
 
-  const date = new Date(createdAt);
-  const [month, day, year, hour, minutes] = [
-    date.getMonth(),
-    date.getDate(),
-    date.getFullYear(),
-    date.getHours(),
-    date.getMinutes(),
-  ];
-
   let userInfo = allUserData.find(
     (userData) => userData.username === post.username
   );
@@ -52,19 +43,25 @@ function Post({ post }) {
     }
   }, [allPosts, _id]);
 
+  const handleProfileClick = (username) => {
+    if(username === user.username){
+      navigate("/profile")
+    } else{
+      navigate(`/profile/${username}`)
+    }
+  }
+
   return (
     <div className="post__container">
       <div className="inner__post-container">
-        <div className="new__post-left">
-          <img src={userInfo?.profilePic} />
+        <div className="new__post-left" onClick={() => handleProfileClick(username)}>
+          <img src={user?.username === userInfo?.username ? user.profilePic : userInfo?.profilePic} />
         </div>
-        <div className="new__post-right">
+        <div className="new__post-right post" onClick={() => handleProfileClick(username)}>
           <p className="post__name">
             {userInfo?.firstName} <span className="id"> {username} </span>{" "}
           </p>
-          <p className="post__date">{`${year}/${
-            +month + 1
-          }/${day}  ${hour}:${minutes}`}</p>
+          <p className="post__date">{new Date(createdAt).toDateString()}</p>
         </div>
         {user.username === userInfo?.username ? (
           <div className="post__menu" onClick={() => setOpenMenu(!openMenu)}>
