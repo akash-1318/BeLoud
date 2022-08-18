@@ -21,6 +21,6 @@ This app contains the Mock Backend created for Social Media App. It contains dif
 3. Redux Toolkit
 4. React router V6
 
-Please go through DevTube and kindly give you feedback.
+Please go through BeLoud and kindly give you feedback.
 
 https://beloud.netlify.app/
