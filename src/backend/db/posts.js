@@ -315,6 +315,53 @@ export const posts = [
   {
     _id: uuid(),
     content:
+      "Shamein ❤️",
+    pic : meme4,
+    likes: {
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: uuid(),
+          firstName: "Ayush",
+          lastName: "Sharma",
+          username: "ayush12",
+          password: "ayushsharma12345",
+          bio : "Enjoying childhood",
+          link : "",
+          profilePic : "https://cutewallpaper.org/21/anime-profile-pictures-boy/Boy-Forum-Avatar-Profile-Photo-ID-193352-Avatar-Abyss.jpg",
+        }
+      ],
+      dislikedBy: [],
+    },
+    username: "Ohmi",
+    bookmark : [],
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments : [
+      {
+        _id: uuid(),
+        username : "akash1307",
+        text : "sukoon 😌",
+        votes : {
+          upvotedBy : [],
+          downvotedBy : [],
+        }
+      },
+      {
+        _id: uuid(),
+        username : "rajB",
+        text : "nice 🤌🏻",
+        votes : {
+          upvotedBy : [],
+          downvotedBy : [],
+        }
+      }
+    ]
+  },
+
+  {
+    _id: uuid(),
+    content:
       "Jab kapde trial karne ke baad salesman apki jyada tarif krde tab aap.",
     pic : meme7,
     likes: {
@@ -415,53 +462,6 @@ export const posts = [
           downvotedBy : [],
         }
       },
-    ]
-  },
-
-  {
-    _id: uuid(),
-    content:
-      "Shamein ❤️",
-    pic : meme4,
-    likes: {
-      likeCount: 1,
-      likedBy: [
-        {
-          _id: uuid(),
-          firstName: "Ayush",
-          lastName: "Sharma",
-          username: "ayush12",
-          password: "ayushsharma12345",
-          bio : "Enjoying childhood",
-          link : "",
-          profilePic : "https://cutewallpaper.org/21/anime-profile-pictures-boy/Boy-Forum-Avatar-Profile-Photo-ID-193352-Avatar-Abyss.jpg",
-        }
-      ],
-      dislikedBy: [],
-    },
-    username: "Ohmi",
-    bookmark : [],
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-    comments : [
-      {
-        _id: uuid(),
-        username : "akash1307",
-        text : "sukoon 😌",
-        votes : {
-          upvotedBy : [],
-          downvotedBy : [],
-        }
-      },
-      {
-        _id: uuid(),
-        username : "rajB",
-        text : "nice 🤌🏻",
-        votes : {
-          upvotedBy : [],
-          downvotedBy : [],
-        }
-      }
     ]
   },
 ];

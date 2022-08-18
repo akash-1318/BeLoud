@@ -37,7 +37,7 @@ function App() {
             <Profile/>
           </RequireAuth>
         }></Route>
-        <Route path="/profile/:username" element={
+        <Route path="/otherprofiles/:username" element={
           <RequireAuth>
             <AnyProfile/>
           </RequireAuth>

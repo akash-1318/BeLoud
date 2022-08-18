@@ -50,6 +50,7 @@ function Bookmark() {
             <h1 className="no__post-text">No bookmarked posts!</h1>
           </div>
         )}
+        <div className="space"></div>
       </section>
       <section className="right__section">
         <FollowSuggestion />

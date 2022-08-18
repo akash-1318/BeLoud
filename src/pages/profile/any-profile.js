@@ -21,6 +21,7 @@ function AnyProfile() {
       </section>
       <section className="middle__section">
         <OtherProfiles/>
+        <div className="space"></div>
       </section>
       <section className="right__section">
         <FollowSuggestion />

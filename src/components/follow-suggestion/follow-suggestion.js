@@ -28,7 +28,7 @@ function FollowSuggestion() {
   }, [user, allUserData]);
 
   const handleProfileClick = (user) => {
-    navigate(`/profile/${user.username}`);
+    navigate(`/otherprofiles/${user.username}`);
     console.log(user);
   };
 

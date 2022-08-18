@@ -91,6 +91,7 @@ function Home() {
         ) : (
           <Loader type="spinner-default" bgColor={"#8292fd"} size={80} />
         )}
+        <div className="space"></div>
       </section>
       <section className="right__section">
         <FollowSuggestion />

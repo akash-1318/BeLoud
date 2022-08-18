@@ -20,6 +20,7 @@ function Profile() {
       </section>
       <section className="middle__section">
         <UserProfile />
+        <div className="space"></div>
       </section>
       <section className="right__section">
         <FollowSuggestion />
