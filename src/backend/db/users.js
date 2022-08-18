@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
+import profile from "../../assets/images/Akash.png"
 /**
  * User Database can be added here.
  * You can add default users of your wish with different attributes
@@ -24,7 +25,7 @@ export const users = [
         password: "akashsharma123",
         bio : "Aspiring web developer",
         link : "https://akash-sharma18.netlify.app",
-        profilePic : "https://akash-sharma18.netlify.app/images/Akash.png",
+        profilePic : profile,
       }
     ],
     following : [
@@ -50,7 +51,7 @@ export const users = [
     password: "akashsharma123",
     bio : "Aspiring web developer",
     link : "https://akash-sharma18.netlify.app",
-    profilePic : "https://akash-sharma18.netlify.app/images/Akash.png",
+    profilePic : profile,
     followers : [
       {
         _id: uuid(),
@@ -132,7 +133,7 @@ export const users = [
         password: "akashsharma123",
         bio : "Aspiring web developer",
         link : "https://akash-sharma18.netlify.app",
-        profilePic : "https://akash-sharma18.netlify.app/images/Akash.png",
+        profilePic : profile,
       },
       {
         _id: uuid(),
