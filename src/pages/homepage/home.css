@@ -60,3 +60,8 @@
     align-items: center;
     grid-gap: .5rem;
 }
+
+.space {
+    height: 7rem;
+    width: 100%;
+}

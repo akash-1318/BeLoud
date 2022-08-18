@@ -32,15 +32,13 @@ function FollowSuggestion() {
     console.log(user);
   };
 
-  console.log(allUserData);
+  console.log(allUserData)
 
   useEffect(() => {
     setSuggestionList(
       allUserData.filter((user) => user.username.includes(searchUser) || user.firstName.includes(searchUser))
     );
   }, [searchUser]);
-
-  console.log(allUserData)
 
   return (
     <>

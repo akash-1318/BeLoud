@@ -4,6 +4,7 @@ const initialState = {
     loader : false,
     modalState : false,
     postModalState : false,
+    editModal : false,
     postIdToUpdate : null,
 }
 
@@ -23,12 +24,15 @@ const additionalSlice = createSlice({
         handlePostModalState : (state) => {
             state.postModalState = !state.postModalState
         },
+        handleEditModalState : (state) => {
+            state.editModal = !state.editModal
+        },
         setPostId : (state, action) => {
             state.postIdToUpdate = action.payload
         }
     },
 })
 
-export const {openLoader, closeLoader, handleModalState, handlePostModalState, setPostId} = additionalSlice.actions
+export const {openLoader, closeLoader, handleModalState, handlePostModalState, setPostId, handleEditModalState} = additionalSlice.actions
 
 export default additionalSlice.reducer

@@ -9,9 +9,9 @@
 }
 
 .new__post-left {
-    width: 10%;
-    height: 5rem;
     width: 5rem;
+    height: 5rem;
+    min-width: 5rem;
     border-radius: 50%;
     background-color: var(--white-color);
     margin-right: 1rem;
@@ -21,6 +21,8 @@
 
 .new__post-left > img {
     border-radius: 50%;
+    height: 100%;
+    width: 100%;
 }
 
 .new__post-right {

@@ -35,3 +35,15 @@ axios.post(`/api/users/edit`,
     },
   }
 )  
+
+export const editUser = (userData, authToken) => 
+axios.post(`/api/users/edit`,
+{
+    userData
+},
+{
+    headers: {
+      authorization: authToken,
+    },
+  }
+)

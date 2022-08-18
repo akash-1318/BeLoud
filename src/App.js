@@ -8,13 +8,13 @@ import MockMan from "mockman-js";
 import {getUsersData} from "./features/userSlice"
 import { useEffect } from "react";
 import {useSelector, useDispatch} from "react-redux"
-import {EditPostModal, PostModal} from "./components/compIndex"
+import {EditPostModal, PostModal, EditModal} from "./components/compIndex"
 import {getAllPostsData} from "./features/postSlice"
 
 function App() {
   const {authToken, user} = useSelector((store) => store.reduxStore)
   const {allPosts} = useSelector((store) => store.post)
-  const {modalState, postModalState} = useSelector((store) => store.additional)
+  const {modalState, postModalState, editModal} = useSelector((store) => store.additional)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -63,6 +63,7 @@ function App() {
       </Routes>
       {modalState ? (<EditPostModal/>) : null}
       {postModalState ? (<PostModal/>) : null}
+      {editModal ? (<EditModal/>) : null}
     </div>
   );
 }

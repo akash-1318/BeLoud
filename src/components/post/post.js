@@ -55,7 +55,7 @@ function Post({ post }) {
     <div className="post__container">
       <div className="inner__post-container">
         <div className="new__post-left" onClick={() => handleProfileClick(username)}>
-          <img src={userInfo?.profilePic} />
+          <img src={user?.username === userInfo?.username ? user.profilePic : userInfo?.profilePic} />
         </div>
         <div className="new__post-right post" onClick={() => handleProfileClick(username)}>
           <p className="post__name">

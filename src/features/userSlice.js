@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import {getUsers, followUser, unfollowUser} from "../services/userServices"
+import {getUsers, followUser, unfollowUser, editUser} from "../services/userServices"
 import {updateUserData} from "./authSlice"
 
 const initialState = {

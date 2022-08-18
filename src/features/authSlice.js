@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import {signupService, signinService} from "../services/serviceExporter"
 import {toast} from "react-toastify"
-import {updateUser} from "../services/userServices"
+import {updateUser, editUser} from "../services/userServices"
 
 const initialState = {
     authToken : localStorage.getItem("TOKEN") ?? "",
@@ -34,6 +34,18 @@ export const updateUserData = createAsyncThunk("auth/updateUserData", async(user
     try{
         const resp = await updateUser(userData, authToken)
         console.log(resp.data.user)
+        return resp.data.user
+    } catch(error){
+        thunkAPI.rejectWithValue(error)
+    }
+})
+
+export const editUserData = createAsyncThunk("auth/editUserData", async(editDetails,thunkAPI) => {
+    const authToken = localStorage.getItem("TOKEN");
+    console.log(editDetails)
+    try{
+        const resp = await editUser(editDetails, authToken)
+        console.log(resp)
         return resp.data.user
     } catch(error){
         thunkAPI.rejectWithValue(error)
@@ -96,6 +108,16 @@ const authSlice = createSlice({
             localStorage.setItem("USER", JSON.stringify(state.user))
         },
         [updateUserData.rejected] : (state) => {
+            state.status = "rejected"
+        },
+        [editUserData.pending] : (state) => {
+            state.status = "fulfilled"
+        },
+        [editUserData.fulfilled] : (state, action) => {
+            state.user = action.payload
+            localStorage.setItem("USER", JSON.stringify(state.user))
+        },
+        [editUserData.rejected] : (state) => {
             state.status = "rejected"
         }
     }

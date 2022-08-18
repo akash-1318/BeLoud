@@ -5,7 +5,7 @@ import defaultProfile from "../../assets/images/profile.svg";
 import { Post } from "../../components/post/post";
 import { getSingleUserPostsData } from "../../features/postSlice";
 import noPost from "../../assets/images/zero-post.jpg";
-import { openLoader, closeLoader } from "../../features/additionalSlice";
+import { openLoader, closeLoader, handleEditModalState } from "../../features/additionalSlice";
 import Loader from "react-js-loader";
 
 function UserProfile() {
@@ -31,6 +31,8 @@ function UserProfile() {
     window.scrollTo(0, 0)
   }, [])
 
+  console.log(user)
+
   return (
     <>
       {loader ? (
@@ -47,7 +49,7 @@ function UserProfile() {
               {user.firstName} {user.lastName}
             </p>
             <p className="user__profile-id">{user.username}</p>
-            <button className="user__profile-btn">Edit Profile</button>
+            <button className="user__profile-btn" onClick={() => dispatch(handleEditModalState())}>Edit Profile</button>
             <p className="profile__bio">{user.bio}</p>
             <a href={user.link} target="_blank">
               <p className="user__link">{user.link}</p>
