@@ -23,4 +23,4 @@ This app contains the Mock Backend created for Social Media App. It contains dif
 
 Please go through DevTube and kindly give you feedback.
 
-https://devtube-13.netlify.app/
+https://beloud.netlify.app/
