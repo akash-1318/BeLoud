@@ -61,7 +61,7 @@ function Post({ post }) {
           <p className="post__name">
             {userInfo?.firstName} <span className="id"> {username} </span>{" "}
           </p>
-          <p className="post__date">{new Date(createdAt).toDateString()}</p>
+          {/* <p className="post__date">{new Date(createdAt).toDateString()}</p> */}
         </div>
         {user.username === userInfo?.username ? (
           <div className="post__menu" onClick={() => setOpenMenu(!openMenu)}>
